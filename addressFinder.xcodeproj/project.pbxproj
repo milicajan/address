@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */; };
-		6C5A5D001FA9BA39004C62B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFF1FA9BA39004C62B2 /* ViewController.swift */; };
+		6C5A5D001FA9BA39004C62B2 /* AddressFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */; };
 		6C5A5D031FA9BA39004C62B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D011FA9BA39004C62B2 /* Main.storyboard */; };
 		6C5A5D061FA9BA39004C62B2 /* addressFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5D041FA9BA39004C62B2 /* addressFinder.xcdatamodeld */; };
 		6C5A5D081FA9BA39004C62B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D071FA9BA39004C62B2 /* Assets.xcassets */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		6C5A5CFA1FA9BA39004C62B2 /* addressFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addressFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6C5A5CFF1FA9BA39004C62B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFinderViewController.swift; sourceTree = "<group>"; };
 		6C5A5D021FA9BA39004C62B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6C5A5D051FA9BA39004C62B2 /* addressFinder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = addressFinder.xcdatamodel; sourceTree = "<group>"; };
 		6C5A5D071FA9BA39004C62B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,14 +57,38 @@
 			isa = PBXGroup;
 			children = (
 				6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */,
-				6C5A5CFF1FA9BA39004C62B2 /* ViewController.swift */,
+				6C5A5D121FA9BD7A004C62B2 /* AddresFinder(Main) */,
+				6C5A5D131FA9BD9B004C62B2 /* View */,
+				6C5A5D141FA9BDAC004C62B2 /* Helpers */,
+			);
+			path = addressFinder;
+			sourceTree = "<group>";
+		};
+		6C5A5D121FA9BD7A004C62B2 /* AddresFinder(Main) */ = {
+			isa = PBXGroup;
+			children = (
+				6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */,
+			);
+			name = "AddresFinder(Main)";
+			sourceTree = "<group>";
+		};
+		6C5A5D131FA9BD9B004C62B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				6C5A5D011FA9BA39004C62B2 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		6C5A5D141FA9BDAC004C62B2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 				6C5A5D071FA9BA39004C62B2 /* Assets.xcassets */,
 				6C5A5D091FA9BA39004C62B2 /* LaunchScreen.storyboard */,
 				6C5A5D0C1FA9BA39004C62B2 /* Info.plist */,
 				6C5A5D041FA9BA39004C62B2 /* addressFinder.xcdatamodeld */,
 			);
-			path = addressFinder;
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,7 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C5A5D001FA9BA39004C62B2 /* ViewController.swift in Sources */,
+				6C5A5D001FA9BA39004C62B2 /* AddressFinderViewController.swift in Sources */,
 				6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */,
 				6C5A5D061FA9BA39004C62B2 /* addressFinder.xcdatamodeld in Sources */,
 			);
