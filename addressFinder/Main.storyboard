@@ -147,6 +147,9 @@
                                         <color key="value" red="0.0" green="0.4392156862745098" blue="0.5490196078431373" alpha="0.50343860035211263" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="6Ye-Aj-5nC" id="KwD-az-jhB"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-NJ-qRH">
                                 <rect key="frame" x="40" y="250" width="334" height="30"/>
@@ -162,6 +165,9 @@
                                         <color key="value" red="0.0" green="0.4392156862745098" blue="0.5490196078431373" alpha="0.496368838028169" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="6Ye-Aj-5nC" id="Kwn-lt-i0D"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRl-EP-FBl">
                                 <rect key="frame" x="40" y="300" width="334" height="30"/>
@@ -177,6 +183,9 @@
                                         <color key="value" red="0.0" green="0.4392156862745098" blue="0.5490196078431373" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="6Ye-Aj-5nC" id="ZyY-Ao-qYd"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Postal" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rJs-Xx-b4S">
                                 <rect key="frame" x="40" y="350" width="334" height="30"/>
@@ -192,6 +201,9 @@
                                         <color key="value" red="0.0" green="0.4392156862745098" blue="0.5490196078431373" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="6Ye-Aj-5nC" id="289-nB-JEo"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4H-tC-LjR">
                                 <rect key="frame" x="40" y="592" width="334" height="40"/>
@@ -330,7 +342,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yeI-QK-7UY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="x58-no-4Vq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="x58-no-4Vq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>

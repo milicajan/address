@@ -9,7 +9,7 @@
 import UIKit
 
 
-class FindAddressViewController: UIViewController {
+class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Outlets
     
@@ -27,6 +27,10 @@ class FindAddressViewController: UIViewController {
        
        self.navigationController?.navigationBar.titleTextAttributes  = [NSFontAttributeName: UIFont(name: "Oswald-Regular", size: 24)!]
        self.navigationController?.navigationBar.titleTextAttributes  = [NSForegroundColorAttributeName: UIColor(red: 228.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)]
+        addressTextField.delegate = self
+        cityTextField.delegate = self
+        stateTextField.delegate = self
+        postalTextField.delegate = self
         
     }
     
@@ -38,6 +42,13 @@ class FindAddressViewController: UIViewController {
     
     @IBAction func backButton() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: UITextFieldDelegate methode
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.isFirstResponder == true {
+            textField.placeholder = ""
+        }
     }
 }
 
