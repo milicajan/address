@@ -19,6 +19,11 @@ class FindAddressViewController: UIViewController {
     
     @IBOutlet weak var searchButton: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+}
+    
     
     @IBAction func searchLocationButton(_ sender: UIButton) {
         
