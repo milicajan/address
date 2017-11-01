@@ -15,15 +15,4 @@ class AddressFinderViewController: UIViewController {
     @IBOutlet weak var findAddressButton: UIButton!
     @IBOutlet weak var bookmarkAddressButton: UIButton!
     
-    // View lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let titleAttributes = [NSFontAttributeName: UIFont(name: "Oswald-Regular", size: 24)!]
-        self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
-        
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-    }
 }
