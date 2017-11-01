@@ -222,7 +222,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="searchLocationButton:" destination="6Ye-Aj-5nC" eventType="touchUpInside" id="38U-Ok-V7a"/>
+                                    <action selector="searchLocationButton:" destination="6Ye-Aj-5nC" eventType="touchUpInside" id="uZ3-J3-bN7"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soM-15-rJA">
@@ -326,11 +326,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressLabel" destination="Rxp-mN-ShW" id="LOj-kt-0iP"/>
                         <outlet property="addressTextField" destination="MbT-Mm-wMm" id="7xi-CG-ZfI"/>
+                        <outlet property="addressUnderlineView" destination="soM-15-rJA" id="3ud-kk-MaN"/>
+                        <outlet property="cityLabel" destination="H7O-1y-Mb6" id="Jfg-90-70J"/>
                         <outlet property="cityTextField" destination="UDv-NJ-qRH" id="out-Hb-j97"/>
+                        <outlet property="cityUnderlineView" destination="qSh-GJ-GHc" id="l9x-82-hba"/>
+                        <outlet property="postalLabel" destination="5oz-xs-YbO" id="jMC-SD-gBp"/>
                         <outlet property="postalTextField" destination="rJs-Xx-b4S" id="rOG-mi-xVM"/>
+                        <outlet property="postalUnderlineView" destination="o4k-Ji-3bK" id="tXc-F6-dTp"/>
                         <outlet property="searchButton" destination="y4H-tC-LjR" id="Si0-QG-paa"/>
+                        <outlet property="stateLabel" destination="zH9-mn-73M" id="ZoS-v0-UBb"/>
                         <outlet property="stateTextField" destination="eRl-EP-FBl" id="KWN-Xp-GYx"/>
+                        <outlet property="stateUnderlineView" destination="5p9-7p-RZS" id="FOw-EJ-4cY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WDK-4P-wp6" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,12 +16,8 @@ import Foundation
 //let geoCoder = CLGeocoder()
 //var coordinates: CLLocationCoordinate2D?
 
-//if let address = addressTextField.text {
-// if let city = cityTextField.text {
-//   if let state = stateTextField.text {
-//  if let postal = postalTextField.text {
-
-//   let fullAddress = "\(address), \(city), \(state), \(postal)"
+///guard let address = addressTextField.text else { return addressLabel.isHidden = true }
+//guard let city = cityTextField.text else { return cityTextField.isHidden = false }
 
 // geoCoder.geocodeAddressString(fullAddress, completionHandler: {(placemarks: [CLPlacemark]?, error: Error?) -> Void in
 //     if let placemark = placemarks?[0] {
