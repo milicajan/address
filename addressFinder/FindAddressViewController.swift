@@ -36,6 +36,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationController?.navigationBar.titleTextAttributes  = [NSFontAttributeName: UIFont(name: "Oswald-Regular", size: 24)!]
         self.navigationController?.navigationBar.titleTextAttributes  = [NSForegroundColorAttributeName: UIColor(red: 228.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)]
+        
         addressTextField.delegate = self
         cityTextField.delegate = self
         stateTextField.delegate = self
@@ -44,16 +45,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func searchLocationButton(_ sender: UIButton) {
-        
-        addressLabel.isHidden = true
-        cityLabel.isHidden = true
-        stateLabel.isHidden = true
-        postalLabel.isHidden = true
-        addressUnderlineView.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-        cityUnderlineView.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-        stateUnderlineView.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-        postalUnderlineView.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-        
+        resetLabelAppearance()
+        resetUnderlineColor()
         
         if let address = addressTextField.text, !address.isEmpty {
             if let city = cityTextField.text, !city.isEmpty {
@@ -64,20 +57,16 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                         print("Address is \(fullAddress)")
                     }
                     else {
-                        postalUnderlineView.backgroundColor = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: 1.0)
-                        postalLabel.isHidden = false
+                        setTextFieldWhenError(postalUnderlineView,postalLabel)
                     }
                 } else {
-                    stateUnderlineView.backgroundColor = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: 1.0)
-                    stateLabel.isHidden = false
+                    setTextFieldWhenError(stateUnderlineView, stateLabel)
                 }
             } else {
-                cityUnderlineView.backgroundColor = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: 1.0)
-                cityLabel.isHidden = false
+                setTextFieldWhenError(cityUnderlineView, cityLabel)
             }
         } else {
-            addressUnderlineView.backgroundColor = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: 1.0)
-            addressLabel.isHidden = false
+            setTextFieldWhenError(addressUnderlineView, addressLabel)
         }
     }
     
@@ -91,5 +80,28 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             textField.placeholder = ""
         }
     }
+    
+    // UIView and UILabel color setting methodes
+    
+    func resetUnderlineColor() {
+        addressUnderlineView.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+        cityUnderlineView.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+        stateUnderlineView.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+        postalUnderlineView.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
+    }
+    
+    func resetLabelAppearance() {
+        addressLabel.isHidden = true
+        cityLabel.isHidden = true
+        stateLabel.isHidden = true
+        postalLabel.isHidden = true
+    }
+    
+    func setTextFieldWhenError(_ view: UIView, _ label: UILabel) {
+        view.backgroundColor = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: 1.0)
+        label.isHidden = false
+    }
 }
+
+
 
