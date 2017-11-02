@@ -47,7 +47,13 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     stateTextField.delegate = self
     postalTextField.delegate = self
     
+    self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
   }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    dismissKeyboard()
+  }
+
   
   @IBAction func searchLocationButton(_ sender: UIButton) {
     
@@ -56,13 +62,15 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     if let address = addressTextField.text, !address.isEmpty {
       if let city = cityTextField.text, !city.isEmpty {
         if let state = stateTextField.text, !state.isEmpty {
-          if let postal = postalTextField.text, !postal.isEmpty, (postal.characters.count > 1 && postal.characters.count < 7) {
+          if let postal = postalTextField.text, !postal.isEmpty {
+             if (postal.characters.count > 1 && postal.characters.count < 7) {
+            
             
             let fullAddress = ("\(address) \(city) \(state) \(postal)")
             print("Address is \(fullAddress)")
           }
-          else {
-            setTextFieldWhenError()
+          } else {
+          setTextFieldWhenError()
           }
         } else {
           setTextFieldWhenError()
@@ -70,10 +78,13 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
       } else {
         setTextFieldWhenError()
       }
-    } else {
-      setTextFieldWhenError()
+        } else {
+          
+        setTextFieldWhenError()
     }
-  }
+    }
+  
+  
   
   @IBAction func backButton() {
     dismiss(animated: true, completion: nil)
@@ -85,6 +96,24 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
       textField.placeholder = ""
     }
   }
+  
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    self.addressTextField.resignFirstResponder()
+    self.cityTextField.resignFirstResponder()
+    self.stateTextField.resignFirstResponder()
+    self.postalTextField.resignFirstResponder()
+    return true
+
+  }
+  
+  func dismissKeyboard(){ /*this is a void function*/
+    self.addressTextField.resignFirstResponder()
+    self.cityTextField.resignFirstResponder()
+    self.stateTextField.resignFirstResponder()
+    self.postalTextField.resignFirstResponder()
+  }
+  
   
   // UIView and UILabel color setting methodes
   
@@ -129,5 +158,4 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
 }
 
 // https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates?Address=1156+High+Street&City=Santa+Cruz&State=CA&Zip=95064&outFields=&outSR=&f=pjson
-
 
