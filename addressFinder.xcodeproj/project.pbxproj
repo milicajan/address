@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D4105D91FABB3D100B989BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D4105D81FABB3D100B989BF /* Main.storyboard */; };
 		6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */; };
 		6C5A5D001FA9BA39004C62B2 /* AddressFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */; };
 		6C5A5D061FA9BA39004C62B2 /* addressFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5D041FA9BA39004C62B2 /* addressFinder.xcdatamodeld */; };
@@ -33,10 +32,10 @@
 		6C5A5D3E1FA9BFD9004C62B2 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */; };
 		6C5A5D421FA9C044004C62B2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D411FA9C044004C62B2 /* Info.plist */; };
 		6C5A5D441FA9EA10004C62B2 /* geocoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5D431FA9EA10004C62B2 /* geocoding.swift */; };
+		6C75FDB61FACA86000D58B43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C75FDB51FACA86000D58B43 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3D4105D81FABB3D100B989BF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6C5A5CFA1FA9BA39004C62B2 /* addressFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addressFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFinderViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		6C5A5D411FA9C044004C62B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C5A5D431FA9EA10004C62B2 /* geocoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = geocoding.swift; sourceTree = "<group>"; };
+		6C75FDB51FACA86000D58B43 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 		6C5A5D131FA9BD9B004C62B2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3D4105D81FABB3D100B989BF /* Main.storyboard */,
+				6C75FDB51FACA86000D58B43 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D4105D91FABB3D100B989BF /* Main.storyboard in Resources */,
+				6C75FDB61FACA86000D58B43 /* Main.storyboard in Resources */,
 				6C5A5D361FA9BFD9004C62B2 /* Oswald-HeavyItalic.ttf in Resources */,
 				6C5A5D3A1FA9BFD9004C62B2 /* Oswald-MediumItalic.ttf in Resources */,
 				6C5A5D2F1FA9BFD9004C62B2 /* Oswald-Bold.ttf in Resources */,
