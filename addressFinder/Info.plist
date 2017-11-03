@@ -33,6 +33,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Myriad Pro Regular.ttf</string>
+		<string>Oswald-Bold.ttf</string>
 		<string>Oswald-Regular.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
