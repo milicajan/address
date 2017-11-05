@@ -11,8 +11,8 @@ import UIKit
 
 class FindAddressViewController: UIViewController, UITextFieldDelegate {
   
-    // MARK: Outlets
-    
+  // MARK: Outlets
+  
   @IBOutlet var addressCustomView: MyCustomView!
   @IBOutlet var cityCustomView: MyCustomView!
   @IBOutlet var stateCustomView: MyCustomView!
@@ -20,8 +20,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var searchButton: UIButton!
   @IBOutlet var scrollView: UIScrollView!
-    
- // @IBOutlet var scrollView: UIScrollView!
+  
+  // @IBOutlet var scrollView: UIScrollView!
   
   
   // MARK: View lifecycle
@@ -32,127 +32,114 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     addressCustomView.textField.delegate = self
     cityCustomView.textField.delegate = self
     stateCustomView.textField.delegate = self
-    postalCustomView.textField.keyboardType = UIKeyboardType.numberPad
+    postalCustomView.textField.delegate = self
     
-   
+    resetTextField(addressCustomView)
+    resetTextField(cityCustomView)
+    resetTextField(stateCustomView)
+    resetTextField(postalCustomView)
+
+    
     self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:))))
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-     }
+  }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
   }
-
+  
   // MARK: Actions
   
   @IBAction func backButton() {
     dismiss(animated: true, completion: nil)
   }
   
-    @IBAction func searchLocationButton(_ sender: UIButton) {
+  @IBAction func searchLocationButton(_ sender: UIButton) {
+    
+    resetTextField(addressCustomView)
+    resetTextField(cityCustomView)
+    resetTextField(stateCustomView)
+    resetTextField(postalCustomView)
+    
+    
+    if !((addressCustomView.textField.text?.isEmpty)! && (cityCustomView.textField.text?.isEmpty)! && (stateCustomView.textField.text?.isEmpty)! && (postalCustomView.textField.text?.isEmpty)!) {
+      if ((postalCustomView.textField.text?.characters.count)! > 2 && (postalCustomView.textField.text?.characters.count)! < 7) {
+        print("Uspesno")
+        } else {
+        
+        setTextFieldWhenError(addressCustomView)
+        setTextFieldWhenError(cityCustomView)
+        setTextFieldWhenError(stateCustomView)
+        setTextFieldWhenNumberError(postalCustomView)
+      }
+    } else {
+      setTextFieldWhenError(addressCustomView)
+      setTextFieldWhenError(cityCustomView)
+      setTextFieldWhenError(stateCustomView)
+      setTextFieldWhenError(postalCustomView)
       
-      //resetTextField(addressUnderlineView, addressLabel)
-       // resetTextField(cityUnderlineView, cityLabel)
-       // resetTextField(cityUnderlineView, cityLabel)
-       // resetTextField(postalUnderlineView, postalLabel)
-        
-       // if
-        //    if let city = cityTextField.text, !city.isEmpty {
-        //        if let state = stateTextField.text, !state.isEmpty {
-          //          if let postal = postalTextField.text, !postal.isEmpty, (postal.characters.count > 1 && postal.characters.count < 7)
-                     //   {
-                            
-                      //      let fullAddress = ("\(address) \(city) \(state) \(postal)")
-                      //      print("Address is \(fullAddress)")
-                        
-                   // } else {
-                    //    setTextFieldWhenError(addressUnderlineView, addressLabel)
-                    //    setTextFieldWhenError(cityUnderlineView, cityLabel)
-                    //    setTextFieldWhenError(cityUnderlineView, cityLabel)
-                    //    setTextFieldWhenError(postalUnderlineView, postalLabel)
-                    //}
-               // } else {
-               //     setTextFieldWhenError(addressUnderlineView, addressLabel)
-                //    setTextFieldWhenError(cityUnderlineView, cityLabel)
-                //    setTextFieldWhenError(cityUnderlineView, cityLabel)
-                //    setTextFieldWhenError(postalUnderlineView, postalLabel)
-                    
-             //   }
-           // } else {
-           //     setTextFieldWhenError(addressUnderlineView, addressLabel)
-           ///     setTextFieldWhenError(cityUnderlineView, cityLabel)
-             //   setTextFieldWhenError(cityUnderlineView, cityLabel)
-             //   setTextFieldWhenError(postalUnderlineView, postalLabel)
-                
-          //  }
-       // } else {
-            
-           // setTextFieldWhenError (addressUnderlineView, addressLabel)
-           // setTextFieldWhenError(cityUnderlineView, cityLabel)
-           /// setTextFieldWhenError(cityUnderlineView, cityLabel)
-           // setTextFieldWhenError(postalUnderlineView, postalLabel)
-       // }
-    //}
-    
-    
-  }
-    
-    // MARK: UITextFieldDelegate methode
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-      addObservers()
     }
+  }
+
+
+  
+  // MARK: UITextFieldDelegate methode
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    addObservers()
+  }
   
   
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      addressCustomView.textField.resignFirstResponder()
-      cityCustomView.textField.resignFirstResponder()
-      stateCustomView.textField.resignFirstResponder()
-      postalCustomView.textField.resignFirstResponder()
-      scrollView.contentInset = UIEdgeInsets.zero
-      return true
-        
-    }
-    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-            let allowedCharacters = CharacterSet.decimalDigits
-            let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
-        }*/
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    addressCustomView.textField.resignFirstResponder()
+    cityCustomView.textField.resignFirstResponder()
+    stateCustomView.textField.resignFirstResponder()
+    postalCustomView.textField.resignFirstResponder()
+    scrollView.contentInset = UIEdgeInsets.zero
+    return true
     
-    
-    func didTapView(gesture: UITapGestureRecognizer) {
-       view.endEditing(true)
-      scrollView.contentInset = UIEdgeInsets.zero
   }
+  /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+   
+   let allowedCharacters = CharacterSet.decimalDigits
+   let characterSet = CharacterSet(charactersIn: string)
+   return allowedCharacters.isSuperset(of: characterSet)
+   }*/
+  
+  
+  func didTapView(gesture: UITapGestureRecognizer) {
+    view.endEditing(true)
+    scrollView.contentInset = UIEdgeInsets.zero
+  }
+  
+  
+  // UIView and UILabel color setting methodes
+  
+  func resetTextField(_ view: MyCustomView) {
     
+    view.underlineView.backgroundColor = AppColor.underlineColor.Success
+    view.label.isHidden = true
     
-    // UIView and UILabel color setting methodes
+  }
+  
+  func setTextFieldWhenError(_ view: MyCustomView) {
+    view.underlineView.backgroundColor = AppColor.underlineColor.Error
+    view.label.isHidden = false
+    view.label.text = "This field is mandatory"
     
-   // func resetTextField(_ view: UIView, _ label: UILabel) {
-        
-   //     view.backgroundColor = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-    //    label.isHidden = true
-        
-    //}
-    
-    //func setTextFieldWhenError(_ view: UIView, _ label: UILabel) {
-      //  view.backgroundColor = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: //1.0)
-      //  label.isHidden = false
-        
-    //}
-    
-   // func setTextFieldWhenNumberError(_ view: UIView, _ label: UILabel) {
-        
-    //    view.backgroundColor = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: //1.0)
-    //    label.isHidden = false
-    //}
-    
+  }
+  
+  func setTextFieldWhenNumberError(_ view: MyCustomView) {
+    view.underlineView.backgroundColor = AppColor.underlineColor.Error
+    view.label.isHidden = false
+    view.label.text = "Input digits(2-6)"
+  }
+  
   
   // MARK: Keyboard handaling notifications
-    
+  
   func addObservers() {
     NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil) {
       notification in
@@ -166,8 +153,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
   }
   
   /// Move TextFields to keyboard. Step 4: Add method to handle keyboardWillShow notification, we're using this method to adjust scrollview to show hidden textfield under keyboard.
- 
-      func keyboardWillShow(notification: Notification) {
+  
+  func keyboardWillShow(notification: Notification) {
     guard let userInfo = notification.userInfo,
       let frame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
         return
@@ -189,7 +176,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     //  var addressResults: Dictionary<NSObject, AnyObject>!
     //  var fetchedAddressLongitude: Double!
     // var fetchedAddressLatitude: Double!
-    
+
     // if let findAddress = fullAddress {
     //     var geocodeURLString = baseURLGeocode + "Address=" + findAddress
     

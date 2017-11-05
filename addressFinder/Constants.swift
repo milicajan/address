@@ -11,9 +11,8 @@ struct  AppColor {
   
   struct  underlineColor {
     
-    static let Error = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
-    static let Success = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: 1.0)
-    
+    static let Error = UIColor(red: 225.0/255.0, green: 64.0/255.0, blue: 76.0/255.0, alpha: 1.0)
+    static let Success = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
   }
   
   struct  ErrorMessage {
