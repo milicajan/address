@@ -19,8 +19,9 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet var postalCustomView: MyCustomView!
   
   @IBOutlet weak var searchButton: UIButton!
-    
   @IBOutlet var scrollView: UIScrollView!
+    
+ // @IBOutlet var scrollView: UIScrollView!
   
   
   // MARK: View lifecycle
@@ -33,24 +34,16 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     stateCustomView.textField.delegate = self
     postalCustomView.textField.keyboardType = UIKeyboardType.numberPad
     
-    
+   
     self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:))))
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(true)
-    //addObservers()
-  }
+    super.viewWillAppear(animated)
+     }
   
   override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(true)
-    
-    //  addressTextField.resignFirstResponder()
-    //  cityTextField.resignFirstResponder()
-    // stateTextField.resignFirstResponder()
-    // postalTextField.resignFirstResponder()
-    
-    // removeObservers()
+    super.viewWillDisappear(animated)
   }
 
   // MARK: Actions
@@ -61,14 +54,12 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
   
     @IBAction func searchLocationButton(_ sender: UIButton) {
       
-      print("\(addressCustomView.textField.text)")
-        
-        //resetTextField(addressUnderlineView, addressLabel)
+      //resetTextField(addressUnderlineView, addressLabel)
        // resetTextField(cityUnderlineView, cityLabel)
        // resetTextField(cityUnderlineView, cityLabel)
        // resetTextField(postalUnderlineView, postalLabel)
         
-        //if let address = addressTextField.text, !address.isEmpty {
+       // if
         //    if let city = cityTextField.text, !city.isEmpty {
         //        if let state = stateTextField.text, !state.isEmpty {
           //          if let postal = postalTextField.text, !postal.isEmpty, (postal.characters.count > 1 && postal.characters.count < 7)
@@ -107,20 +98,21 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     //}
     
     
-  
+  }
     
     // MARK: UITextFieldDelegate methode
-   // func textFieldDidBeginEditing(_ textField: UITextField) {
-   //    scrollView.setContentOffset(CGPoint(x: 0,y:  100), animated: true)
-   // }
-  //
-   // func textFieldDidEndEditing(_ textField: UITextField) {
-        //scrollView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
-    //}
-    //func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //    textField.resignFirstResponder()
-     //   scrollView.setContentOffset(CGPoint(x: 0,y:  0), animated: true)
-     //   return true
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+      addObservers()
+    }
+  
+  
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      addressCustomView.textField.resignFirstResponder()
+      cityCustomView.textField.resignFirstResponder()
+      stateCustomView.textField.resignFirstResponder()
+      postalCustomView.textField.resignFirstResponder()
+      scrollView.contentInset = UIEdgeInsets.zero
+      return true
         
     }
     /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -133,7 +125,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     func didTapView(gesture: UITapGestureRecognizer) {
        view.endEditing(true)
-   }
+      scrollView.contentInset = UIEdgeInsets.zero
+  }
     
     
     // UIView and UILabel color setting methodes
@@ -157,40 +150,38 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     //    label.isHidden = false
     //}
     
-    // MARK: NotificationCenter
+  
+  // MARK: Keyboard handaling notifications
     
-   /* func addObservers() {
-        NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil) {
-            notification in
-            self.keyboardWillShow(notification: notification)
-        }
-        
-        NotificationCenter.default.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: nil) {
-            notification in
-            self.keyboardWillHide(notification: notification)
-        }
+  func addObservers() {
+    NotificationCenter.default.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil) {
+      notification in
+      self.keyboardWillShow(notification: notification)
     }
-    
-    func removeObservers() {
-        NotificationCenter.default.removeObserver(self)
-    }
-    // MARK: Keyboard handaling notifications
-    
-    func keyboardWillShow(notification: Notification) {
-        guard let userInfo = notification.userInfo, let frame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            return
-        }
-        
-        
-        scrollView.setContentOffset(CGPoint(x: 0,y:  250), animated: true)
-    }
-    
-    
-    func keyboardWillHide(notification: Notification) {
-        scrollView.contentInset = UIEdgeInsets.zero
-    }*/
+  }
+  
+  /// Move TextFields to keyboard. Step 6: Method to remove observers.
+  func removeObservers() {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
+  /// Move TextFields to keyboard. Step 4: Add method to handle keyboardWillShow notification, we're using this method to adjust scrollview to show hidden textfield under keyboard.
  
-    
+      func keyboardWillShow(notification: Notification) {
+    guard let userInfo = notification.userInfo,
+      let frame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+        return
+    }
+    let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height, right: 0)
+    scrollView.contentInset = contentInset
+  }
+  
+  /// Move TextFields to keyboard. Step 5: Method to reset scrollview when keyboard is hidden.
+  func keyboardWillHide(notification: Notification) {
+    scrollView.contentInset = UIEdgeInsets.zero
+  }
+}
+
 
     // MARK: Web service
     //func findAddress(fullAddress: String!, withCompletionHandlet completionHandler: ((_ status: String, _ success: Bool) -> Void)) {
@@ -214,4 +205,4 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         }
         return false
  }*/
-}
+
