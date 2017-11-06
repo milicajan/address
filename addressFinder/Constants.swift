@@ -7,7 +7,7 @@
 //
 import UIKit
 
-struct  AppColor {
+struct  Constants {
   
   struct  underlineColor {
     
@@ -15,8 +15,12 @@ struct  AppColor {
     static let Success = UIColor(red: 0/255.0, green: 112.0/255.0, blue: 140.0/255.0, alpha: 1.0)
   }
   
-  struct  ErrorMessage {
-    static let Error = "This field is mandatory"
-    static let Success = "Input digits(2-6)"
+  struct  Message {
+    static let error = "This field is mandatory"
+    static let  addressError = "Maximum 100"
+    static let  cityError = "Maximum 50"
+    static let  stateError = "Maximum 50"
+    static let  postalErrorMin = "Minimum 1 digit"
+    static let postalErrorMax = "Maximum 6 digits"
   }
 }
