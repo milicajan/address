@@ -26,10 +26,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addressCustomView.textField.delegate = self
-        cityCustomView.textField.delegate = self
-        stateCustomView.textField.delegate = self
-        postalCustomView.textField.delegate = self
+      addTextFieldDelegate()
         
         changeTextFieldStyle()
         
@@ -54,73 +51,10 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func searchLocationButton(_ sender: UIButton) {
-        
-        changeTextFieldStyle()
-        
-        
-        if (addressCustomView.textField.text?.isEmpty)! {
-            textFieldStyleError(addressCustomView)
-        } else if (addressCustomView.textField.text?.characters.count)! > 100 {
-            textFieldStyleError(addressCustomView)
-        } else {
-            textFieldStyleSuccess(addressCustomView)
-        }
-        
-        if (cityCustomView.textField.text?.isEmpty)! {
-            textFieldStyleError(cityCustomView)
-        } else if (cityCustomView.textField.text?.characters.count)! > 50 {
-            textFieldStyleError(cityCustomView)
-            cityCustomView.label.text = Constants.Message.cityError
-        } else {
-            textFieldStyleSuccess(cityCustomView)
-        }
-        
-        
-        if (stateCustomView.textField.text?.isEmpty)! {
-            textFieldStyleError(stateCustomView)
-        } else if (stateCustomView.textField.text?.characters.count)! > 50 {
-            textFieldStyleError(stateCustomView)
-            stateCustomView.label.text = Constants.Message.stateError
-        } else {
-            textFieldStyleSuccess(stateCustomView)
-        }
-        
-        
-        if (postalCustomView.textField.text?.isEmpty)! {
-            textFieldStyleError(postalCustomView)
-        } else if ((postalCustomView.textField.text?.characters.count)! < 2) {
-            textFieldStyleError(postalCustomView)
-            postalCustomView.label.text = Constants.Message.postalErrorMin
-        } else if ((postalCustomView.textField.text?.characters.count)! > 6){
-            textFieldStyleError(postalCustomView)
-            postalCustomView.label.text = Constants.Message.postalErrorMax
-        } else {
-            textFieldStyleSuccess(self.postalCustomView)
-        }
-    }
+        searchLocation()
+      }
 
-
-
-       /* if !((addressCustomView.textField.text?.isEmpty)! || (cityCustomView.textField.text?.isEmpty)! || (stateCustomView.textField.text?.isEmpty)! || (postalCustomView.textField.text?.isEmpty)!) {
-            if ((postalCustomView.textField.text?.characters.count)! > 2 && (postalCustomView.textField.text?.characters.count)! < 7) {
-                print("Find Location")
-            } else {
-                
-                textFieldStyleError(addressCustomView)
-                textFieldStyleError(cityCustomView)
-                textFieldStyleError(stateCustomView)
-                textFieldStyleNumberError(postalCustomView)
-            }
-        } else {
-            textFieldStyleError(addressCustomView)
-            textFieldStyleError(cityCustomView)
-            textFieldStyleError(stateCustomView)
-            textFieldStyleError(postalCustomView)
-            
-        }*/
-        
-
-    
+  
     func textFieldShouldReturn() -> Bool {
         positionScrollView()
         return true
@@ -140,12 +74,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func textFieldStyleError(_ view: MyCustomView) {
-        view.underlineView.backgroundColor = Constants.underlineColor.Error
-        view.label.isHidden = false
-        //selectView(view)
-    }
-    
+  
     func changeTextFieldStyle() {
         
         textFieldStyleSuccess(addressCustomView)
@@ -153,7 +82,14 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         textFieldStyleSuccess(stateCustomView)
         textFieldStyleSuccess(postalCustomView)
     }
-    
+  
+  func addTextFieldDelegate() {
+    addressCustomView.textField.delegate = self
+    cityCustomView.textField.delegate = self
+    stateCustomView.textField.delegate = self
+    postalCustomView.textField.delegate = self
+  }
+  
     // MARK: Keyboard handaling notifications
     
     func addObservers() {
@@ -190,25 +126,102 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         stateCustomView.textField.resignFirstResponder()
         postalCustomView.textField.resignFirstResponder()
     }
+
+
+  // MARK: SearchLocation methodes
+  
+  func textFieldStyleError(_ view: MyCustomView) {
+    view.underlineView.backgroundColor = Constants.underlineColor.Error
+    view.label.isHidden = false
+  }
+  
+  func searchLocation() {
     
-      /* func selectView(_ view: MyCustomView) -> String {
-        
-        
-        switch view {
-            
-        case addressCustomView:
-            
-            view.label.text = "Maximum hellooo"
-            
-        case cityCustomView:
-            view.label.text = Constants.Message.cityError
-            
-        case stateCustomView:
-            view.label.text = Constants.Message.stateError
-        }
-   }
+    if (addressCustomView.textField.text?.isEmpty)! {
+      textFieldStyleError(addressCustomView)
+      addressCustomView.label.text = Constants.Message.error
+    } else  {
+      selectView(addressCustomView)
+    }
+    
+    
+    if (cityCustomView.textField.text?.isEmpty)! {
+      textFieldStyleError(cityCustomView)
+      cityCustomView.label.text = Constants.Message.error
+    } else {
+      selectView(cityCustomView)
+    }
+    
+    
+    if (stateCustomView.textField.text?.isEmpty)! {
+      textFieldStyleError(stateCustomView)
+      stateCustomView.label.text = Constants.Message.error
+    } else {
+      selectView(stateCustomView)
+    }
+    
+    if (postalCustomView.textField.text?.isEmpty)! {
+      textFieldStyleError(postalCustomView)
+      postalCustomView.label.text = Constants.Message.error
+    } else {
+      selectView(postalCustomView)
+    }
+    
+  }
+  
+  func selectView(_ view: MyCustomView){
+    
+    switch view {
+      
+    case addressCustomView:
+      
+      if (view.textField.text?.characters.count)! > 100 {
+        textFieldStyleError(view)
+        view.label.text = Constants.Message.addressError
+      } else {
+        textFieldStyleSuccess(view)
+      }
+      
+    case cityCustomView:
+      
+      if (view.textField.text?.characters.count)! > 70 {
+        textFieldStyleError(view)
+        view.label.text = Constants.Message.cityError
+      } else {
+        textFieldStyleSuccess(view)
+      }
+      
+      
+    case stateCustomView:
+      
+      if (view.textField.text?.characters.count)! > 50 {
+        textFieldStyleError(view)
+        view.label.text = Constants.Message.stateError
+      } else {
+        textFieldStyleSuccess(view)
+      }
+      
+      
+      
+    case postalCustomView:
+      
+      if (view.textField.text?.characters.count)! < 2 {
+        textFieldStyleError(view)
+        view.label.text = Constants.Message.postalErrorMin
+      } else if (view.textField.text?.characters.count)! > 6 {
+        textFieldStyleError(view)
+        view.label.text = Constants.Message.postalErrorMax
+      } else {
+        textFieldStyleSuccess(view)
+      }
+      
+    default:
+      break
+    }
+  }
+}
 
-
+    
 // MARK: Web service
 //func findAddress(fullAddress: String!, withCompletionHandlet completionHandler: ((_ status: String, _ success: Bool) -> Void)) {
 //   let baseURLGeocode = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates/json?"
@@ -237,6 +250,4 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
  let allowedCharacters = CharacterSet.decimalDigits
  let characterSet = CharacterSet(charactersIn: string)
  return allowedCharacters.isSuperset(of: characterSet)
- }*/
-}*/
-}
+ */

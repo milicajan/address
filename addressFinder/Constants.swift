@@ -17,10 +17,10 @@ struct  Constants {
   
   struct  Message {
     static let error = "This field is mandatory"
-    static let  addressError = "Maximum 100"
-    static let  cityError = "Maximum 50"
-    static let  stateError = "Maximum 50"
-    static let  postalErrorMin = "Minimum 1 digit"
+    static let addressError = "Maximum 100"
+    static let cityError = "Maximum 50"
+    static let stateError = "Maximum 50"
+    static let postalErrorMin = "Minimum 1 digit"
     static let postalErrorMax = "Maximum 6 digits"
   }
 }

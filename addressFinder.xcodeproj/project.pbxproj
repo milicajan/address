@@ -82,7 +82,6 @@
 		3D0CFD9D1FAF251900DD4BFD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */,
 				6C5A5D121FA9BD7A004C62B2 /* AddresFinderMain */,
 				6C5A5D151FA9BE1D004C62B2 /* FindAddress */,
 			);
@@ -93,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				3D87143F1FAF85F7008FDCBE /* Constants.swift */,
+				3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -116,6 +116,7 @@
 		6C5A5CFC1FA9BA39004C62B2 /* addressFinder */ = {
 			isa = PBXGroup;
 			children = (
+				6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */,
 				3D87143E1FAF85E0008FDCBE /* Data */,
 				3D0CFD9D1FAF251900DD4BFD /* Controllers */,
 				6C5A5D131FA9BD9B004C62B2 /* View */,
@@ -157,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				6C5A5D161FA9BE3F004C62B2 /* FindAddressViewController.swift */,
-				3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */,
 			);
 			name = FindAddress;
 			sourceTree = "<group>";
