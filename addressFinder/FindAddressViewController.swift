@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 
 class FindAddressViewController: UIViewController, UITextFieldDelegate {
@@ -26,11 +28,13 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      addTextFieldDelegate()
+        addTextFieldDelegate()
         
         changeTextFieldStyle()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:))))
+        findAddress()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,15 +50,16 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Actions
     
-    @IBAction func backButton() {
+    @IBAction func backButtonTapAction() {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func searchLocationButton(_ sender: UIButton) {
+    @IBAction func searchLocationButtonTapAction(_ sender: UIButton) {
         searchLocation()
-      }
-
-  
+        
+    }
+    
+    
     func textFieldShouldReturn() -> Bool {
         positionScrollView()
         return true
@@ -74,22 +79,20 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-  
     func changeTextFieldStyle() {
-        
         textFieldStyleSuccess(addressCustomView)
         textFieldStyleSuccess(cityCustomView)
         textFieldStyleSuccess(stateCustomView)
         textFieldStyleSuccess(postalCustomView)
     }
-  
-  func addTextFieldDelegate() {
-    addressCustomView.textField.delegate = self
-    cityCustomView.textField.delegate = self
-    stateCustomView.textField.delegate = self
-    postalCustomView.textField.delegate = self
-  }
-  
+    
+    func addTextFieldDelegate() {
+        addressCustomView.textField.delegate = self
+        cityCustomView.textField.delegate = self
+        stateCustomView.textField.delegate = self
+        postalCustomView.textField.delegate = self
+    }
+    
     // MARK: Keyboard handaling notifications
     
     func addObservers() {
@@ -126,128 +129,183 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         stateCustomView.textField.resignFirstResponder()
         postalCustomView.textField.resignFirstResponder()
     }
-
+    
 
   // MARK: SearchLocation methodes
   
-  func textFieldStyleError(_ view: MyCustomView) {
-    view.underlineView.backgroundColor = Constants.underlineColor.Error
-    view.label.isHidden = false
-  }
-  
-  func searchLocation() {
-    
-    if (addressCustomView.textField.text?.isEmpty)! {
-      textFieldStyleError(addressCustomView)
-      addressCustomView.label.text = Constants.Message.error
-    } else  {
-      selectView(addressCustomView)
+    func textFieldStyleError(_ view: MyCustomView) {
+        view.underlineView.backgroundColor = Constants.underlineColor.Error
+        view.label.isHidden = false
     }
     
-    
-    if (cityCustomView.textField.text?.isEmpty)! {
-      textFieldStyleError(cityCustomView)
-      cityCustomView.label.text = Constants.Message.error
-    } else {
-      selectView(cityCustomView)
+    func searchLocation() {
+        
+        if (addressCustomView.textField.text?.isEmpty)! {
+            textFieldStyleError(addressCustomView)
+            addressCustomView.label.text = Constants.Message.error
+        } else  {
+            checkCondition(addressCustomView)
+        }
+        
+        
+        if (cityCustomView.textField.text?.isEmpty)! {
+            textFieldStyleError(cityCustomView)
+            cityCustomView.label.text = Constants.Message.error
+        } else {
+            checkCondition(cityCustomView)
+        }
+        
+        
+        if (stateCustomView.textField.text?.isEmpty)! {
+            textFieldStyleError(stateCustomView)
+            stateCustomView.label.text = Constants.Message.error
+        } else {
+            checkCondition(stateCustomView)
+        }
+        
+        if (postalCustomView.textField.text?.isEmpty)! {
+            textFieldStyleError(postalCustomView)
+            postalCustomView.label.text = Constants.Message.error
+        } else {
+            checkCondition(postalCustomView)
+        }
+        
     }
     
-    
-    if (stateCustomView.textField.text?.isEmpty)! {
-      textFieldStyleError(stateCustomView)
-      stateCustomView.label.text = Constants.Message.error
-    } else {
-      selectView(stateCustomView)
+    func checkCondition(_ view: MyCustomView) {
+        
+        switch view {
+            
+        case addressCustomView:
+            
+            if (view.textField.text?.characters.count)! > 100 {
+                textFieldStyleError(view)
+                view.label.text = Constants.Message.addressError
+            } else {
+                textFieldStyleSuccess(view)
+            }
+            
+        case cityCustomView:
+            
+            if (view.textField.text?.characters.count)! > 50 {
+                textFieldStyleError(view)
+                view.label.text = Constants.Message.cityError
+            } else {
+                textFieldStyleSuccess(view)
+            }
+            
+            
+        case stateCustomView:
+            
+            if (view.textField.text?.characters.count)! > 50 {
+                textFieldStyleError(view)
+                view.label.text = Constants.Message.stateError
+            } else {
+                textFieldStyleSuccess(view)
+            }
+            
+            
+            
+        case postalCustomView:
+            
+            if (view.textField.text?.characters.count)! < 2 {
+                textFieldStyleError(view)
+                view.label.text = Constants.Message.postalErrorMin
+            } else if (view.textField.text?.characters.count)! > 6 {
+                textFieldStyleError(view)
+                view.label.text = Constants.Message.postalErrorMax
+            } else {
+                textFieldStyleSuccess(view)
+            }
+            
+        default:
+            break
+        }
     }
     
-    if (postalCustomView.textField.text?.isEmpty)! {
-      textFieldStyleError(postalCustomView)
-      postalCustomView.label.text = Constants.Message.error
-    } else {
-      selectView(postalCustomView)
-    }
-    
-  }
-  
-  func selectView(_ view: MyCustomView){
-    
-    switch view {
-      
-    case addressCustomView:
-      
-      if (view.textField.text?.characters.count)! > 100 {
-        textFieldStyleError(view)
-        view.label.text = Constants.Message.addressError
-      } else {
-        textFieldStyleSuccess(view)
-      }
-      
-    case cityCustomView:
-      
-      if (view.textField.text?.characters.count)! > 70 {
-        textFieldStyleError(view)
-        view.label.text = Constants.Message.cityError
-      } else {
-        textFieldStyleSuccess(view)
-      }
-      
-      
-    case stateCustomView:
-      
-      if (view.textField.text?.characters.count)! > 50 {
-        textFieldStyleError(view)
-        view.label.text = Constants.Message.stateError
-      } else {
-        textFieldStyleSuccess(view)
-      }
-      
-      
-      
-    case postalCustomView:
-      
-      if (view.textField.text?.characters.count)! < 2 {
-        textFieldStyleError(view)
-        view.label.text = Constants.Message.postalErrorMin
-      } else if (view.textField.text?.characters.count)! > 6 {
-        textFieldStyleError(view)
-        view.label.text = Constants.Message.postalErrorMax
-      } else {
-        textFieldStyleSuccess(view)
-      }
-      
-    default:
-      break
-    }
-  }
-}
 
     
 // MARK: Web service
-//func findAddress(fullAddress: String!, withCompletionHandlet completionHandler: ((_ status: String, _ success: Bool) -> Void)) {
-//   let baseURLGeocode = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates/json?"
-//  var addressResults: Dictionary<NSObject, AnyObject>!
-//  var fetchedAddressLongitude: Double!
-// var fetchedAddressLatitude: Double!
+    func findAddress() {
+        
+        /*var addressResults: Dictionary<NSObject, AnyObject>!
+         var fetchedAddressLongitude: Double!
+         var fetchedAddressLatitude: Double!
+         */
+        
+       /* guard let address = addressCustomView.textField.text else {return}
+        guard let  city = cityCustomView.textField.text else {return}
+        guard let state = stateCustomView.textField.text else {return}
+        guard let  postal = postalCustomView.textField.text else {return}
+        
+         
+        let parameters = ["Address": "\(address)",
+            "City": "\(city)",
+            "State": "\(state)",
+            "Zip": "\(postal)",
+            "f": "pjson"] */
+        
+        let baseURL = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates"
 
-// if let findAddress = fullAddress {
-//     var geocodeURLString = baseURLGeocode + "Address=" + findAddress
+        let parameters = ["Address": "1156 High Street",
+            "City": "Santa Cruz",
+            "State": "CA",
+            "Zip": "95064",
+            "f": "pjson"]
 
-// }
+        Alamofire.request(baseURL, method: .get, parameters:parameters).validate().responseJSON { (response) -> Void in
+            
+            if let result = response.result.value {
+                 let json = result as! NSDictionary
+                 print(json)
+            
+                guard let array = json["candidates"] as? [Any] else {
+                    print("Expected 'results' array")
+                    return
+                }
+            
+                for resultDict in array {
+                    // 3
+                 if let resultDict = resultDict as? [String: Any] {
+                        // 4
+                    if let location = resultDict["location"] as? [String: Any] {
+                        
+                       print("Location: \(location)")
+                        
+        }
+}
+}
+}
+        /*https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates?Address=1156+High+Street&City=Santa+Cruz&State=CA&Zip=95064&f=pjson
 
+}
+/* {
+"spatialReference" : {
+    "wkid" : 4326 } ,
+"candidates" : [
+{
+"address" : "900 HIGH ST, SANTA CRUZ, CA, 95060",
+"location" : {
+"x" : -122.04728799999981,
+"y" : 36.978865000000155
+},
+"score" : 40,
+"attributes" : {
 
-// https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates?Address=1156+High+Street&City=Santa+Cruz&State=CA&Zip=95064&outFields=&outSR=&f=pjson
-/*extension UITextField {
- func isNumeric(textField: UITextField) -> Bool {
- if (textField.text!.characters.count < 7 && textField.text!.characters.count > 1) {
- let numbers: Set<Character> = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
- return Set(self.text!.characters).isSubset(of: numbers)
- }
- return false
- }*/
+}
+},
+{
+"address" : "925 HIGH ST, SANTA CRUZ, CA, 95060",
+"location" : {
+"x" : -122.04605499999991,
+"y" : 36.97797700000018
+},
+"score" : 40,
+"attributes" : {
 
-/*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
- 
- let allowedCharacters = CharacterSet.decimalDigits
- let characterSet = CharacterSet(charactersIn: string)
- return allowedCharacters.isSuperset(of: characterSet)
- */
+}
+}*/
+*/
+}
+}
+}

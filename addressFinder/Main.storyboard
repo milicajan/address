@@ -194,7 +194,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="searchLocationButton:" destination="6Ye-Aj-5nC" eventType="touchUpInside" id="bKA-tQ-chj"/>
+                                                    <action selector="searchLocationButtonTapAction:" destination="6Ye-Aj-5nC" eventType="touchUpInside" id="FJ5-yL-gRQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -243,7 +243,7 @@
                         <barButtonItem key="leftBarButtonItem" image="img_back" id="XUD-ZI-dRF">
                             <color key="tintColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="backButton" destination="6Ye-Aj-5nC" id="FKe-zE-TyY"/>
+                                <action selector="backButtonTapAction" destination="6Ye-Aj-5nC" id="jGx-UN-kIV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

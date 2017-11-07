@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		196E549CDBA63320F0A5E945 /* Pods_addressFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E00ABFF03325BC12F159B8 /* Pods_addressFinder.framework */; };
 		3D0CFDA31FAF480800DD4BFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0CFDA21FAF480800DD4BFD /* Main.storyboard */; };
 		3D87143B1FAF5F1C008FDCBE /* MyCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D87143A1FAF5F1C008FDCBE /* MyCustomView.xib */; };
 		3D87143D1FAF5F30008FDCBE /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */; };
@@ -41,6 +42,7 @@
 		3D87143A1FAF5F1C008FDCBE /* MyCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCustomView.xib; sourceTree = "<group>"; };
 		3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		3D87143F1FAF85F7008FDCBE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		48E00ABFF03325BC12F159B8 /* Pods_addressFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_addressFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5A5CFA1FA9BA39004C62B2 /* addressFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addressFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFinderViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,8 @@
 		6C5A5D2C1FA9BFD9004C62B2 /* Oswald-Stencil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Stencil.ttf"; sourceTree = "<group>"; };
 		6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		6C5A5D411FA9C044004C62B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB3F110B2D1D16BB39618400 /* Pods-addressFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addressFinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-addressFinder/Pods-addressFinder.release.xcconfig"; sourceTree = "<group>"; };
+		BF0A2AEF8933123E0609841E /* Pods-addressFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addressFinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-addressFinder/Pods-addressFinder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,12 +77,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				196E549CDBA63320F0A5E945 /* Pods_addressFinder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FBF21BE203F5CFE358D2F6E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF0A2AEF8933123E0609841E /* Pods-addressFinder.debug.xcconfig */,
+				AB3F110B2D1D16BB39618400 /* Pods-addressFinder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3D0CFD9D1FAF251900DD4BFD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +116,8 @@
 			children = (
 				6C5A5CFC1FA9BA39004C62B2 /* addressFinder */,
 				6C5A5CFB1FA9BA39004C62B2 /* Products */,
+				1FBF21BE203F5CFE358D2F6E /* Pods */,
+				CFBBB6FB4B054DCD1EC41695 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,6 +202,14 @@
 			path = oswald;
 			sourceTree = "<group>";
 		};
+		CFBBB6FB4B054DCD1EC41695 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48E00ABFF03325BC12F159B8 /* Pods_addressFinder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,9 +217,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C5A5D0F1FA9BA39004C62B2 /* Build configuration list for PBXNativeTarget "addressFinder" */;
 			buildPhases = (
+				ED08CB718DE9CED08E5ABA4C /* [CP] Check Pods Manifest.lock */,
 				6C5A5CF61FA9BA39004C62B2 /* Sources */,
 				6C5A5CF71FA9BA39004C62B2 /* Frameworks */,
 				6C5A5CF81FA9BA39004C62B2 /* Resources */,
+				8AA278545BA69959D8676DCC /* [CP] Embed Pods Frameworks */,
+				EF09B389B777E1CA608F1AEA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -270,6 +297,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8AA278545BA69959D8676DCC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-addressFinder/Pods-addressFinder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-addressFinder/Pods-addressFinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED08CB718DE9CED08E5ABA4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-addressFinder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF09B389B777E1CA608F1AEA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-addressFinder/Pods-addressFinder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6C5A5CF61FA9BA39004C62B2 /* Sources */ = {
@@ -394,6 +475,7 @@
 		};
 		6C5A5D101FA9BA39004C62B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF0A2AEF8933123E0609841E /* Pods-addressFinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = addressFinder/Info.plist;
@@ -408,6 +490,7 @@
 		};
 		6C5A5D111FA9BA39004C62B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB3F110B2D1D16BB39618400 /* Pods-addressFinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = addressFinder/Info.plist;
