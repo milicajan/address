@@ -226,56 +226,58 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
 
     
 // MARK: Web service
-    func findAddress() {
+  func findAddress() {
+    
+    /*var addressResults: Dictionary<NSObject, AnyObject>!
+     var fetchedAddressLongitude: Double!
+     var fetchedAddressLatitude: Double!
+     */
+    
+    /* guard let address = addressCustomView.textField.text else {return}
+     guard let  city = cityCustomView.textField.text else {return}
+     guard let state = stateCustomView.textField.text else {return}
+     guard let  postal = postalCustomView.textField.text else {return}
+     
+     
+     let parameters = ["Address": "\(address)",
+     "City": "\(city)",
+     "State": "\(state)",
+     "Zip": "\(postal)",
+     "f": "pjson"] */
+    
+    let baseURL = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates"
+    
+    let parameters = ["Address": "1156 High Street",
+                      "City": "Santa Cruz",
+                      "State": "CA",
+                      "Zip": "95064",
+                      "f": "pjson"]
+    
+    Alamofire.request(baseURL, method: .get, parameters:parameters).validate().responseJSON { (response) -> Void in
+      
+      if let result = response.result.value {
         
-        /*var addressResults: Dictionary<NSObject, AnyObject>!
-         var fetchedAddressLongitude: Double!
-         var fetchedAddressLatitude: Double!
-         */
+        let json = result as? [String: Any]
         
-       /* guard let address = addressCustomView.textField.text else {return}
-        guard let  city = cityCustomView.textField.text else {return}
-        guard let state = stateCustomView.textField.text else {return}
-        guard let  postal = postalCustomView.textField.text else {return}
-        
-         
-        let parameters = ["Address": "\(address)",
-            "City": "\(city)",
-            "State": "\(state)",
-            "Zip": "\(postal)",
-            "f": "pjson"] */
-        
-        let baseURL = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates"
-
-        let parameters = ["Address": "1156 High Street",
-            "City": "Santa Cruz",
-            "State": "CA",
-            "Zip": "95064",
-            "f": "pjson"]
-
-        Alamofire.request(baseURL, method: .get, parameters:parameters).validate().responseJSON { (response) -> Void in
-            
-            if let result = response.result.value {
-                 let json = result as! NSDictionary
-                 print(json)
-            
-                guard let array = json["candidates"] as? [Any] else {
-                    print("Expected 'results' array")
-                    return
-                }
-            
-                for resultDict in array {
-                    // 3
-                 if let resultDict = resultDict as? [String: Any] {
-                        // 4
-                    if let location = resultDict["location"] as? [String: Any] {
-                        
-                       print("Location: \(location)")
-                        
+        guard let array = json?["candidates"] as? [[String: Any]] else {
+          print("Expected 'results' array")
+          return
         }
-}
-}
-}
+        
+        
+        if let location =  array[0]["location"] as? [String: Double] {
+          
+          let long = location["x"]!
+          let lat = location["y"]!
+          print("Longitude is \(long) and latitude \(lat)")
+          
+        }
+        else {
+          print("error")
+        }
+        
+      }
+    }
         /*https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates?Address=1156+High+Street&City=Santa+Cruz&State=CA&Zip=95064&f=pjson
 
 }
@@ -288,7 +290,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
 "location" : {
 "x" : -122.04728799999981,
 "y" : 36.978865000000155
-},
+}")
 "score" : 40,
 "attributes" : {
 
@@ -308,4 +310,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
 */
 }
 }
-}
+
+
+
+
