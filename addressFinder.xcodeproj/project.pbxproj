@@ -35,6 +35,8 @@
 		6C5A5D3C1FA9BFD9004C62B2 /* Oswald-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2B1FA9BFD9004C62B2 /* Oswald-RegularItalic.ttf */; };
 		6C5A5D3D1FA9BFD9004C62B2 /* Oswald-Stencil.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2C1FA9BFD9004C62B2 /* Oswald-Stencil.ttf */; };
 		6C5A5D3E1FA9BFD9004C62B2 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */; };
+		6CD2469E1FB3041400D70C7D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2469D1FB3041400D70C7D /* MapViewController.swift */; };
+		6CD246A31FB3222E00D70C7D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD246A21FB3222E00D70C7D /* Address.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		6C5A5D2C1FA9BFD9004C62B2 /* Oswald-Stencil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Stencil.ttf"; sourceTree = "<group>"; };
 		6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		6C5A5D411FA9C044004C62B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6CD2469D1FB3041400D70C7D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		6CD246A21FB3222E00D70C7D /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AB3F110B2D1D16BB39618400 /* Pods-addressFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addressFinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-addressFinder/Pods-addressFinder.release.xcconfig"; sourceTree = "<group>"; };
 		BF0A2AEF8933123E0609841E /* Pods-addressFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addressFinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-addressFinder/Pods-addressFinder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +102,7 @@
 			children = (
 				6C5A5D121FA9BD7A004C62B2 /* AddresFinderMain */,
 				6C5A5D151FA9BE1D004C62B2 /* FindAddress */,
+				6CD2469F1FB3041E00D70C7D /* MapViewController */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -200,6 +205,15 @@
 				6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */,
 			);
 			path = oswald;
+			sourceTree = "<group>";
+		};
+		6CD2469F1FB3041E00D70C7D /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6CD2469D1FB3041400D70C7D /* MapViewController.swift */,
+				6CD246A21FB3222E00D70C7D /* Address.swift */,
+			);
+			name = MapViewController;
 			sourceTree = "<group>";
 		};
 		CFBBB6FB4B054DCD1EC41695 /* Frameworks */ = {
@@ -307,10 +321,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-addressFinder/Pods-addressFinder-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -362,7 +378,9 @@
 				3D87143D1FAF5F30008FDCBE /* MyCustomView.swift in Sources */,
 				6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */,
 				6C5A5D061FA9BA39004C62B2 /* addressFinder.xcdatamodeld in Sources */,
+				6CD246A31FB3222E00D70C7D /* Address.swift in Sources */,
 				3D8714401FAF85F7008FDCBE /* Constants.swift in Sources */,
+				6CD2469E1FB3041400D70C7D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
