@@ -12,6 +12,7 @@
 		3D87143B1FAF5F1C008FDCBE /* MyCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D87143A1FAF5F1C008FDCBE /* MyCustomView.xib */; };
 		3D87143D1FAF5F30008FDCBE /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */; };
 		3D8714401FAF85F7008FDCBE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87143F1FAF85F7008FDCBE /* Constants.swift */; };
+		6C114A461FB4A79D000D22D7 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C114A451FB4A79D000D22D7 /* BookmarksViewController.swift */; };
 		6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */; };
 		6C5A5D001FA9BA39004C62B2 /* AddressFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */; };
 		6C5A5D061FA9BA39004C62B2 /* addressFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5D041FA9BA39004C62B2 /* addressFinder.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		3D87143F1FAF85F7008FDCBE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		48E00ABFF03325BC12F159B8 /* Pods_addressFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_addressFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C114A451FB4A79D000D22D7 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		6C5A5CFA1FA9BA39004C62B2 /* addressFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addressFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFinderViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				6C5A5D121FA9BD7A004C62B2 /* AddresFinderMain */,
 				6C5A5D151FA9BE1D004C62B2 /* FindAddress */,
 				6CD2469F1FB3041E00D70C7D /* MapViewController */,
+				6C114A451FB4A79D000D22D7 /* BookmarksViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C114A461FB4A79D000D22D7 /* BookmarksViewController.swift in Sources */,
 				6C5A5D171FA9BE3F004C62B2 /* FindAddressViewController.swift in Sources */,
 				6C5A5D001FA9BA39004C62B2 /* AddressFinderViewController.swift in Sources */,
 				3D87143D1FAF5F30008FDCBE /* MyCustomView.swift in Sources */,

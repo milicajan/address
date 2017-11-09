@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
+import MapKit
 
 
 class FindAddressViewController: UIViewController, UITextFieldDelegate {
@@ -25,7 +25,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var scrollView: UIScrollView!
   
     // MARK: View lifecycle
-    
+    var address = Address(title: "", locationName: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +35,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         changeTextFieldStyle()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:))))
-    
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -254,93 +255,44 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                           "f": "pjson"]
         
         Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
-            
-            if((responseData.result.value) != nil) {
-                let json = JSON(responseData.result.value!)
-                print(json)
-                //for result in json["candidates"].arrayValue {
-                  //  let address = result["address"].string
-                    //let long = result["location"]["x"].doubleValue
-                    //let lot = result["location"]["y"].doubleValue
-        } else {
-                print("error")
-            }
-        }
-    }
-}
+            DispatchQueue.main.async( execute: {
+                
+                switch responseData.result {
+                    
+                case .success:
+                    if((responseData.result.value) != nil) {
+                        let json = JSON(responseData.result.value!)
+                        
+                        let result = json["candidates"].arrayValue
+                        let firstLocation = result[0].dictionaryValue
+                        let address = firstLocation["address"]?.string
+                        let lat = firstLocation["location"]?["x"].doubleValue
+                        let long = firstLocation["location"]?["y"].doubleValue
+                        let title = "Location"
+                        
+                        self.address = Address(title: address!,
+                                                locationName: title,
+                                                coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
+                        
+                        self.performSegue(withIdentifier: "showLocation", sender: self.address)
 
-/*8  Alamofire.request(baseURL, method: .get, parameters:parameters).responseJSON { (response) in
-            
-            NSLog("response =  \(response)")
-            
-            switch response.result {
-                
-            case .success:
-                
-                guard let result = response.result.value else {
-                    NSLog("Result value in response in nil")
-                    return
+                        }else {
+                        print("Error")
+                    }
+                case .failure(let error):
+                    print("Error fetching location \(error)")
+                    break
                 }
-                
-                print(result)
-                let json = result as? [String: Any]
-                guard let array = json?["candidates"] as? [[String: Any]] else {
-                    print("Expected 'canditates' array")
-                    return
-                }
-                
-                if let location =  array[0]["location"] as? [String: Double] {
-                let longitude = location["x"]!
-                let latitude = location["y"]!
-                print("Longitude is \(longitude) and latitude \(latitude)")
-                } else {
-                    print("Expected longitude and latitude")
-                }
-                
-            case .failure(let error):
-                print("Error fetching location \(error)")
-                break
-            }
+            })
         }
     }
     
     // MARK:
-  //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //    if segue.identifier == "ShowLocation"
-   //     {
-      //
-       //     let mapViewController = se
-        }
-    //}
-//}
-
-/*https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates?Address=1156+High+Street&City=Santa+Cruz&State=CA&Zip=95064&f=pjson
- 
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if segue.identifier == "showLocation" {
+          let mapViewController = segue.destination as! MapViewController
+          mapViewController.address = self.address
+           navigationItem.backBarButtonItem?.title = ""
+    }
  }
-/* {
-"spatialReference" : {
-    "wkid" : 4326 } ,
-"candidates" : [
-{
-"address" : "900 HIGH ST, SANTA CRUZ, CA, 95060",
-"location" : {
-"x" : -122.04728799999981,
-"y" : 36.978865000000155
-},
-"score" : 40,
-"attributes" : {
-
 }
-},
-{
-"address" : "925 HIGH ST, SANTA CRUZ, CA, 95060",
-"location" : {
-"x" : -122.04605499999991,
-"y" : 36.97797700000018
-},
-"score" : 40,
-"attributes" : {
-
-}
-}*/
-*/*/

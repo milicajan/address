@@ -15,62 +15,61 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var address = [Address]()
+    @IBOutlet weak var bookmarkButton: UIButton!
+    // MARK: Actions
+    
+    @IBAction func backButtonTappedAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // Variables
     
     let regionRadius: CLLocationDistance = 1000
+    var address = Address(title: "", locationName: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
     
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bookmarkButton.layer.cornerRadius = 25.0
         
-        let initialLocation = CLLocation(latitude: 36.9788650000002 , longitude: -122.047288)
+        zoomMapOnLocation(location: address)
         
-        zoomMapOnLocation(location: initialLocation)
-        
-        let address = Address(title: "900 HIGH ST",
-                              locationName: "SANTA CRUZ, CA, 95060",
-                              coordinate: CLLocationCoordinate2D(latitude: 36.9788650000002 , longitude: -122.047288))
-    
         mapView.addAnnotation(address)
         mapView.delegate = self
-        //fetchData()
-       // mapView.addAnnotations(venues)
+        
     }
     
     // MARK: CLLocation methode
     
-    func zoomMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+    func zoomMapOnLocation(location: Address) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
         
     }
+    
 }
-
 
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if let annotation = annotation as? Address {
-        
-        let reuseIdentifier = "pin"
-        var view: MKPinAnnotationView
-        
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else {
             
-            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+            let reuseIdentifier = "pin"
+            var view: MKPinAnnotationView
+            
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+            }
+            return view
         }
-        return view
-    }
         return nil
-}
+    }
 }
