@@ -77,8 +77,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     func textFieldStyleSuccess(_ view: MyCustomView) {
         view.underlineView.backgroundColor = Constants.underlineColor.Success
         view.label.isHidden = true
-        
-    }
+     }
     
     func changeTextFieldStyle() {
         textFieldStyleSuccess(addressCustomView)
@@ -139,11 +138,12 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         view.label.isHidden = false
     }
     
-    func searchLocation() {
+    func searchLocation(){
         
         if (addressCustomView.textField.text?.isEmpty)! {
             textFieldStyleError(addressCustomView)
             addressCustomView.label.text = Constants.Message.error
+        
         } else  {
             checkCondition(addressCustomView)
         }
@@ -152,6 +152,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         if (cityCustomView.textField.text?.isEmpty)! {
             textFieldStyleError(cityCustomView)
             cityCustomView.label.text = Constants.Message.error
+            
+            
         } else {
             checkCondition(cityCustomView)
         }
@@ -160,6 +162,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         if (stateCustomView.textField.text?.isEmpty)! {
             textFieldStyleError(stateCustomView)
             stateCustomView.label.text = Constants.Message.error
+            
         } else {
             checkCondition(stateCustomView)
         }
@@ -167,13 +170,14 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         if (postalCustomView.textField.text?.isEmpty)! {
             textFieldStyleError(postalCustomView)
             postalCustomView.label.text = Constants.Message.error
+        
         } else {
             checkCondition(postalCustomView)
         }
-        
-    }
+
+}
     
-    func checkCondition(_ view: MyCustomView) {
+    func checkCondition(_ view: MyCustomView){
         
         switch view {
             
@@ -182,8 +186,10 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             if (view.textField.text?.characters.count)! > 100 {
                 textFieldStyleError(view)
                 view.label.text = Constants.Message.addressError
+                
             } else {
                 textFieldStyleSuccess(view)
+        
             }
             
         case cityCustomView:
@@ -191,8 +197,10 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             if (view.textField.text?.characters.count)! > 50 {
                 textFieldStyleError(view)
                 view.label.text = Constants.Message.cityError
+                
             } else {
                 textFieldStyleSuccess(view)
+                
             }
             
             
@@ -201,8 +209,10 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             if (view.textField.text?.characters.count)! > 50 {
                 textFieldStyleError(view)
                 view.label.text = Constants.Message.stateError
+                
             } else {
                 textFieldStyleSuccess(view)
+            
             }
             
             
@@ -212,11 +222,14 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             if (view.textField.text?.characters.count)! < 2 {
                 textFieldStyleError(view)
                 view.label.text = Constants.Message.postalErrorMin
+                
             } else if (view.textField.text?.characters.count)! > 6 {
                 textFieldStyleError(view)
                 view.label.text = Constants.Message.postalErrorMax
+                
             } else {
                 textFieldStyleSuccess(view)
+            
             }
             
         default:
@@ -228,71 +241,67 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Web service
     func findAddress() {
-        
-        /*var addressResults: Dictionary<NSObject, AnyObject>!
-         var fetchedAddressLongitude: Double!
-         var fetchedAddressLatitude: Double!
-         */
-        
-        /* guard let address = addressCustomView.textField.text else {return}
+      
+         guard let address = addressCustomView.textField.text else {return}
          guard let  city = cityCustomView.textField.text else {return}
          guard let state = stateCustomView.textField.text else {return}
          guard let  postal = postalCustomView.textField.text else {return}
          
          
-         let parameters = ["Address": "\(address)",
-         "City": "\(city)",
-         "State": "\(state)",
-         "Zip": "\(postal)",
-         "f": "pjson"] */
+         //let parameters = ["Address": "\(address)",
+         //"City": "\(city)",
+         //"State": "\(state)",
+        // "Zip": "\(postal)",
+        // "f": "pjson"]
         
-        let baseURL = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer/findAddressCandidates"
+        let baseURL = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer///findAddressCandidates"
         
         let parameters = ["Address": "1156 High Street",
-                          "City": "Santa Cruz",
-                          "State": "CA",
-                          "Zip": "95064",
-                          "f": "pjson"]
+                         "City": "Santa Cruz",
+                         "State": "CA",
+                        "Zip": "95064",
+                        "f": "pjson"]
         
         Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
-            DispatchQueue.main.async( execute: {
+          DispatchQueue.main.async( execute: {
                 
-                switch responseData.result {
-                    
-                case .success:
-                    if((responseData.result.value) != nil) {
-                        let json = JSON(responseData.result.value!)
-                        
-                        let result = json["candidates"].arrayValue
-                        let firstLocation = result[0].dictionaryValue
-                        let address = firstLocation["address"]?.string
-                        let lat = firstLocation["location"]?["x"].doubleValue
-                        let long = firstLocation["location"]?["y"].doubleValue
-                        let title = "Location"
-                        
-                        self.address = Address(title: address!,
-                                                locationName: title,
-                                                coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
-                        
-                        self.performSegue(withIdentifier: "showLocation", sender: self.address)
-
-                        }else {
-                        print("Error")
-                    }
-                case .failure(let error):
-                    print("Error fetching location \(error)")
-                    break
-                }
-            })
+          switch responseData.result {
+            
+          case .success:
+            if((responseData.result.value) != nil) {
+              let json = JSON(responseData.result.value!)
+              
+              let result = json["candidates"].arrayValue
+              let firstLocation = result[0].dictionaryValue
+              let address = firstLocation["address"]?.string
+              let lat = firstLocation["location"]?["x"].doubleValue
+              let long = firstLocation["location"]?["y"].doubleValue
+              let title = "Location"
+              
+              self.address = Address(title: address!,
+                                     locationName: title,
+                                     coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
+              
+              self.performSegue(withIdentifier: "showLocation", sender: self.address)
+              
+            }else {
+              print("Error")
+            }
+          case .failure(let error):
+            print("Error fetching location \(error)")
+            break
+          }
+      })
+  }
         }
-    }
-    
-    // MARK:
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if segue.identifier == "showLocation" {
-          let mapViewController = segue.destination as! MapViewController
-          mapViewController.address = self.address
-           navigationItem.backBarButtonItem?.title = ""
-    }
- }
+
+        // MARK:
+      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "showLocation" {
+               let mapViewController = segue.destination as! MapViewController
+              mapViewController.address = self.address
+               navigationItem.backBarButtonItem?.title = ""
+  
+        }
+}
 }

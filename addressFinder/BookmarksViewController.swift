@@ -10,4 +10,24 @@ import UIKit
 
 class  BookmarksViewController: UITableViewController {
     
+    
+    // MARK: View life cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+}
+    
+    
+    //MARK: TableView DataSource
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
+        return cell
+    }
+    
 }
