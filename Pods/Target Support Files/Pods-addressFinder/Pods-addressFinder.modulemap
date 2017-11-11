@@ -1,0 +1,6 @@
+framework module Pods_addressFinder {
+  umbrella header "Pods-addressFinder-umbrella.h"
+
+  export *
+  module * { export * }
+}
