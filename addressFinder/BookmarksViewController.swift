@@ -10,12 +10,22 @@ import UIKit
 
 class  BookmarksViewController: UITableViewController {
     
+
     
+
+  @IBAction func backButtonTappedAction(_ sender: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
+  }
+  
+
+  
+  
+  
     // MARK: View life cycle
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+      
 }
     
     

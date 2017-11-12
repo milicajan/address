@@ -22,5 +22,6 @@ struct  Constants {
     static let stateError = "Maximum 50"
     static let postalErrorMin = "Minimum 1 digit"
     static let postalErrorMax = "Maximum 6 digits"
+    static let wrongAddress = "Input correct address"
   }
 }

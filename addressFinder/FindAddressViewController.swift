@@ -35,8 +35,14 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         changeTextFieldStyle()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:))))
-        
-    }
+      
+      let backImage = UIImage(named: "img_back")
+      
+      self.navigationController?.navigationBar.backIndicatorImage = backImage
+      
+      self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+  
+  }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -78,8 +84,16 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         view.underlineView.backgroundColor = Constants.underlineColor.Success
         view.label.isHidden = true
      }
+  
+  func textFieldStyleWrongAddress(_ view: MyCustomView) {
+    view.underlineView.backgroundColor = Constants.underlineColor.Error
+    view.label.isHidden = false
+    view.label.text = Constants.Message.wrongAddress
     
-    func changeTextFieldStyle() {
+  }
+
+  
+  func changeTextFieldStyle() {
         textFieldStyleSuccess(addressCustomView)
         textFieldStyleSuccess(cityCustomView)
         textFieldStyleSuccess(stateCustomView)
@@ -186,7 +200,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             if (view.textField.text?.characters.count)! > 100 {
                 textFieldStyleError(view)
                 view.label.text = Constants.Message.addressError
-                
+              
             } else {
                 textFieldStyleSuccess(view)
         
@@ -248,34 +262,35 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
          guard let  postal = postalCustomView.textField.text else {return}
          
          
-         //let parameters = ["Address": "\(address)",
-         //"City": "\(city)",
-         //"State": "\(state)",
-        // "Zip": "\(postal)",
-        // "f": "pjson"]
-        
+      let parameters = ["Address": "\(address)",
+        "City": "\(city)",
+        "State": "\(state)",
+        "Zip": "\(postal)",
+        "f": "pjson"]
+      
         let baseURL = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer///findAddressCandidates"
         
-        let parameters = ["Address": "1156 High Street",
-                         "City": "Santa Cruz",
-                         "State": "CA",
-                        "Zip": "95064",
-                        "f": "pjson"]
+       // let parameters = ["Address": "1156 High Street",
+                       //  "City": "Santa Cruz",
+                       //  "State": "CA",
+                       // "Zip": "95064",
+                       // "f": "pjson"]
         
-        Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
-          DispatchQueue.main.async( execute: {
-                
+      Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
+        DispatchQueue.main.async( execute: {
+          
           switch responseData.result {
             
           case .success:
-            if((responseData.result.value) != nil) {
-              let json = JSON(responseData.result.value!)
+            
+            let json = JSON(responseData.result.value as Any)
+            print(json)
+            if !(json["candidates"].array?.isEmpty)! {
+              let firstLocation =  json["candidates"][0].dictionary
               
-              let result = json["candidates"].arrayValue
-              let firstLocation = result[0].dictionaryValue
-              let address = firstLocation["address"]?.string
-              let lat = firstLocation["location"]?["x"].doubleValue
-              let long = firstLocation["location"]?["y"].doubleValue
+              let address = firstLocation?["address"]?.string
+              let lat = firstLocation?["location"]?["x"].doubleValue
+              let long = firstLocation?["location"]?["y"].doubleValue
               let title = "Location"
               
               self.address = Address(title: address!,
@@ -283,27 +298,31 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                                      coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
               
               self.performSegue(withIdentifier: "showLocation", sender: self.address)
-              
-            }else {
-              print("Error")
             }
+            else {
+              self.textFieldStyleWrongAddress(self.addressCustomView)
+              self.textFieldStyleWrongAddress(self.cityCustomView)
+              self.textFieldStyleWrongAddress(self.stateCustomView)
+              self.textFieldStyleWrongAddress(self.postalCustomView)
+            }
+            
           case .failure(let error):
             print("Error fetching location \(error)")
             break
           }
-      })
+        })
+      }
   }
-        }
-
-        // MARK:
-      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "showLocation" {
-               let mapViewController = segue.destination as! MapViewController
-              mapViewController.address = self.address
-               navigationItem.backBarButtonItem?.title = ""
   
-        }
-}
+  // MARK:
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showLocation" {
+      let mapViewController = segue.destination as! MapViewController
+      mapViewController.address = self.address
+      navigationItem.backBarButtonItem?.title = ""
+      
+    }
+  }
 }
 
 

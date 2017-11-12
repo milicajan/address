@@ -18,11 +18,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var bookmarkButton: UIButton!
     // MARK: Actions
     
-    @IBAction func backButtonTappedAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    // Variables
+     // Variables
     
     let regionRadius: CLLocationDistance = 1000
     var address = Address(title: "", locationName: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
@@ -37,7 +33,7 @@ class MapViewController: UIViewController {
         
         mapView.addAnnotation(address)
         mapView.delegate = self
-        
+    
     }
     
     // MARK: CLLocation methode
