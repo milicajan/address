@@ -25,8 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.normal)
       UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.highlighted)
       
-     let backImg: UIImage = UIImage(named: "img_back")!
-     UIBarButtonItem.appearance().setBackButtonBackgroundImage(backImg, for: .normal, barMetrics: .default)
+    
       return true
     }
     
