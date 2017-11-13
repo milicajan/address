@@ -286,14 +286,29 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                         }
                         
                     case .failure(let error):
-                        print("Error fetching location \(error)")
-                        break
+                        if let error = error as? URLError, error.code == URLError.notConnectedToInternet {
+                            self.showNetworkError()
+                        } else {
+                            print("Error fetching address \(error)")
+                        }
                     }
                 })
             }
         }else {
             print("Error")
         }
+        
+    }
+    
+    // MARK: Alert
+    
+    func showNetworkError() {
+        let alert = UIAlertController(title: "NETWORK ERROR", message: "There is no internet connection.Please try again.",
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title:"OK", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
         
     }
     

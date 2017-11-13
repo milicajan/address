@@ -12,7 +12,6 @@
 		3D87143B1FAF5F1C008FDCBE /* MyCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D87143A1FAF5F1C008FDCBE /* MyCustomView.xib */; };
 		3D87143D1FAF5F30008FDCBE /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */; };
 		3D8714401FAF85F7008FDCBE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87143F1FAF85F7008FDCBE /* Constants.swift */; };
-		6C114A461FB4A79D000D22D7 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C114A451FB4A79D000D22D7 /* BookmarksViewController.swift */; };
 		6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */; };
 		6C5A5D001FA9BA39004C62B2 /* AddressFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */; };
 		6C5A5D061FA9BA39004C62B2 /* addressFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A5D041FA9BA39004C62B2 /* addressFinder.xcdatamodeld */; };
@@ -38,6 +37,9 @@
 		6C5A5D3E1FA9BFD9004C62B2 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */; };
 		6C6D8D651FB98CCF00E070F0 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D8D641FB98CCF00E070F0 /* Location+CoreDataProperties.swift */; };
 		6C6D8D671FB98CD600E070F0 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D8D661FB98CD600E070F0 /* Location+CoreDataClass.swift */; };
+		6C6D8D6C1FB9B5F600E070F0 /* MyCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C6D8D6B1FB9B5F600E070F0 /* MyCustomCell.xib */; };
+		6C6D8D6E1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D8D6D1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift */; };
+		6C6D8D701FB9CDED00E070F0 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D8D6F1FB9CDED00E070F0 /* BookmarkViewController.swift */; };
 		6C753F9B1FB5FC5600364C19 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C753F991FB5FC5600364C19 /* CoreData.xcdatamodeld */; };
 		6CD2469E1FB3041400D70C7D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2469D1FB3041400D70C7D /* MapViewController.swift */; };
 		6CD246A31FB3222E00D70C7D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD246A21FB3222E00D70C7D /* Address.swift */; };
@@ -49,7 +51,6 @@
 		3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		3D87143F1FAF85F7008FDCBE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		48E00ABFF03325BC12F159B8 /* Pods_addressFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_addressFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C114A451FB4A79D000D22D7 /* BookmarksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		6C5A5CFA1FA9BA39004C62B2 /* addressFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addressFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C5A5CFD1FA9BA39004C62B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C5A5CFF1FA9BA39004C62B2 /* AddressFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressFinderViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +78,9 @@
 		6C5A5D411FA9C044004C62B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C6D8D641FB98CCF00E070F0 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6C6D8D661FB98CD600E070F0 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6C6D8D6B1FB9B5F600E070F0 /* MyCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCustomCell.xib; sourceTree = "<group>"; };
+		6C6D8D6D1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomCellTableViewCell.swift; sourceTree = "<group>"; };
+		6C6D8D6F1FB9CDED00E070F0 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
 		6C753F9A1FB5FC5600364C19 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		6CD2469D1FB3041400D70C7D /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6CD246A21FB3222E00D70C7D /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 			children = (
 				3D0CFDA21FAF480800DD4BFD /* Main.storyboard */,
 				3D87143A1FAF5F1C008FDCBE /* MyCustomView.xib */,
+				6C6D8D6B1FB9B5F600E070F0 /* MyCustomCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -222,7 +227,8 @@
 		6C6D8D631FB98C9F00E070F0 /* BookmarksViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6C114A451FB4A79D000D22D7 /* BookmarksViewController.swift */,
+				6C6D8D6D1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift */,
+				6C6D8D6F1FB9CDED00E070F0 /* BookmarkViewController.swift */,
 			);
 			name = BookmarksViewController;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 				6C5A5D391FA9BFD9004C62B2 /* Oswald-Medium.ttf in Resources */,
 				6C5A5D3C1FA9BFD9004C62B2 /* Oswald-RegularItalic.ttf in Resources */,
 				6C5A5D371FA9BFD9004C62B2 /* Oswald-Light.ttf in Resources */,
+				6C6D8D6C1FB9B5F600E070F0 /* MyCustomCell.xib in Resources */,
 				6C5A5D381FA9BFD9004C62B2 /* Oswald-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,7 +409,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C6D8D671FB98CD600E070F0 /* Location+CoreDataClass.swift in Sources */,
-				6C114A461FB4A79D000D22D7 /* BookmarksViewController.swift in Sources */,
 				6C5A5D171FA9BE3F004C62B2 /* FindAddressViewController.swift in Sources */,
 				6C6D8D651FB98CCF00E070F0 /* Location+CoreDataProperties.swift in Sources */,
 				6C753F9B1FB5FC5600364C19 /* CoreData.xcdatamodeld in Sources */,
@@ -411,6 +417,8 @@
 				6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */,
 				6C5A5D061FA9BA39004C62B2 /* addressFinder.xcdatamodeld in Sources */,
 				6CD246A31FB3222E00D70C7D /* Address.swift in Sources */,
+				6C6D8D701FB9CDED00E070F0 /* BookmarkViewController.swift in Sources */,
+				6C6D8D6E1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift in Sources */,
 				3D8714401FAF85F7008FDCBE /* Constants.swift in Sources */,
 				6CD2469E1FB3041400D70C7D /* MapViewController.swift in Sources */,
 			);

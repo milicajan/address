@@ -6,13 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Oswald-Bold.ttf">
-            <string>Oswald-Bold</string>
-        </array>
         <array key="Oswald-Regular.ttf">
             <string>Oswald-Regular</string>
         </array>
@@ -46,7 +42,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="njc-y8-jOa" kind="show" id="5dg-Ec-Xwq"/>
+                                    <segue destination="D8g-Gz-5oz" kind="show" id="bvV-SZ-pjD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNg-6w-xrg">
@@ -98,141 +94,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="840.79999999999995" y="123.68815592203899"/>
-        </scene>
-        <!--Bookmarks-->
-        <scene sceneID="qzR-sC-eah">
-            <objects>
-                <tableViewController id="6UF-6i-hL8" customClass="BookmarksViewController" customModule="addressFinder" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="144" sectionHeaderHeight="28" sectionFooterHeight="28" id="zaA-ZA-kO5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <color key="sectionIndexBackgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="addressCell" rowHeight="120" id="oJ7-76-vtV">
-                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oJ7-76-vtV" id="gzb-iF-1Ir">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.66666666666667"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfI-tV-PbB">
-                                            <rect key="frame" x="20" y="18" width="56.333333333333329" height="14"/>
-                                            <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="City:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XC-Ck-dVh">
-                                            <rect key="frame" x="19.999999999999996" y="37" width="30.666666666666661" height="27"/>
-                                            <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="State:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gom-X8-ovq">
-                                            <rect key="frame" x="20.000000000000004" y="69" width="39.333333333333343" height="22"/>
-                                            <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Postal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwQ-Lh-AC9">
-                                            <rect key="frame" x="20" y="96" width="45.666666666666671" height="13.666666666666671"/>
-                                            <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novosadskog sajma 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C73-t1-toO">
-                                            <rect key="frame" x="93" y="15" width="124" height="22"/>
-                                            <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Serbia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFS-NA-dY2">
-                                            <rect key="frame" x="93" y="69" width="37.333333333333343" height="22"/>
-                                            <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzo-0f-xWQ">
-                                            <rect key="frame" x="93" y="96" width="39" height="13.666666666666671"/>
-                                            <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fo8-Ov-T3d">
-                                            <rect key="frame" x="373" y="20" width="21" height="24"/>
-                                            <state key="normal" image="garbage"/>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbA-N4-sZo">
-                                            <rect key="frame" x="373" y="77.666666666666671" width="21" height="22"/>
-                                            <state key="normal" image="eye@1"/>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Novi Sad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asj-XS-nNt">
-                                            <rect key="frame" x="93" y="42" width="50.333333333333343" height="22"/>
-                                            <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="asj-XS-nNt" firstAttribute="baseline" secondItem="2XC-Ck-dVh" secondAttribute="baseline" id="1qj-aI-Cwk"/>
-                                        <constraint firstItem="kFS-NA-dY2" firstAttribute="leading" secondItem="gzb-iF-1Ir" secondAttribute="leadingMargin" constant="85" id="96D-KO-YKg"/>
-                                        <constraint firstAttribute="bottom" secondItem="SbA-N4-sZo" secondAttribute="bottom" constant="20" id="AZM-hH-N3d"/>
-                                        <constraint firstAttribute="bottom" secondItem="hzo-0f-xWQ" secondAttribute="bottom" constant="10" id="Ewc-oN-AVt"/>
-                                        <constraint firstItem="C73-t1-toO" firstAttribute="top" secondItem="gzb-iF-1Ir" secondAttribute="top" constant="15" id="Fhn-Yi-ETi"/>
-                                        <constraint firstItem="hzo-0f-xWQ" firstAttribute="leading" secondItem="gzb-iF-1Ir" secondAttribute="leadingMargin" constant="85" id="FwD-4w-ISc"/>
-                                        <constraint firstItem="kFS-NA-dY2" firstAttribute="baseline" secondItem="gom-X8-ovq" secondAttribute="baseline" id="HIw-5i-uwd"/>
-                                        <constraint firstItem="2XC-Ck-dVh" firstAttribute="top" secondItem="gzb-iF-1Ir" secondAttribute="topMargin" constant="29" id="M3r-QA-yMo"/>
-                                        <constraint firstItem="lfI-tV-PbB" firstAttribute="top" secondItem="gzb-iF-1Ir" secondAttribute="topMargin" constant="10" id="MhB-bG-642"/>
-                                        <constraint firstItem="hzo-0f-xWQ" firstAttribute="baseline" secondItem="vwQ-Lh-AC9" secondAttribute="baseline" id="NGk-XX-qVC"/>
-                                        <constraint firstItem="asj-XS-nNt" firstAttribute="leading" secondItem="gzb-iF-1Ir" secondAttribute="leadingMargin" constant="85" id="Q1I-jH-WNq"/>
-                                        <constraint firstItem="hzo-0f-xWQ" firstAttribute="top" secondItem="kFS-NA-dY2" secondAttribute="bottom" constant="5" id="T8i-o3-W1v"/>
-                                        <constraint firstItem="fo8-Ov-T3d" firstAttribute="top" secondItem="gzb-iF-1Ir" secondAttribute="top" constant="20" id="UDt-rX-IJ4"/>
-                                        <constraint firstItem="asj-XS-nNt" firstAttribute="top" secondItem="C73-t1-toO" secondAttribute="bottom" constant="5" id="UOS-ef-bg7"/>
-                                        <constraint firstAttribute="trailing" secondItem="SbA-N4-sZo" secondAttribute="trailing" constant="20" id="XPT-tv-gKD"/>
-                                        <constraint firstItem="SbA-N4-sZo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fo8-Ov-T3d" secondAttribute="bottom" constant="10" id="Xss-wb-evJ"/>
-                                        <constraint firstItem="lfI-tV-PbB" firstAttribute="leading" secondItem="gzb-iF-1Ir" secondAttribute="leading" constant="20" id="ZM9-Ca-foe"/>
-                                        <constraint firstItem="2XC-Ck-dVh" firstAttribute="top" secondItem="lfI-tV-PbB" secondAttribute="bottom" constant="5" id="ZSf-lr-0S6"/>
-                                        <constraint firstItem="2XC-Ck-dVh" firstAttribute="leading" secondItem="lfI-tV-PbB" secondAttribute="leading" id="ZWQ-Yr-3L3"/>
-                                        <constraint firstAttribute="bottom" secondItem="vwQ-Lh-AC9" secondAttribute="bottom" constant="10" id="g0m-X5-laF"/>
-                                        <constraint firstAttribute="trailing" secondItem="fo8-Ov-T3d" secondAttribute="trailing" constant="20" id="hMB-B5-id5"/>
-                                        <constraint firstItem="vwQ-Lh-AC9" firstAttribute="leading" secondItem="gzb-iF-1Ir" secondAttribute="leading" constant="20" id="lqD-87-F2n"/>
-                                        <constraint firstItem="C73-t1-toO" firstAttribute="baseline" secondItem="lfI-tV-PbB" secondAttribute="baseline" constant="4.9999999999999964" id="rGI-fh-wfs"/>
-                                        <constraint firstItem="C73-t1-toO" firstAttribute="leading" secondItem="gzb-iF-1Ir" secondAttribute="leadingMargin" constant="85" id="rLJ-rE-U89"/>
-                                        <constraint firstItem="gom-X8-ovq" firstAttribute="top" secondItem="2XC-Ck-dVh" secondAttribute="bottom" constant="5" id="rlS-r9-0J4"/>
-                                        <constraint firstItem="kFS-NA-dY2" firstAttribute="top" secondItem="asj-XS-nNt" secondAttribute="bottom" constant="5" id="uYP-id-ew4"/>
-                                        <constraint firstItem="vwQ-Lh-AC9" firstAttribute="top" secondItem="gom-X8-ovq" secondAttribute="bottom" constant="5" id="xgU-zF-YcZ"/>
-                                        <constraint firstItem="gom-X8-ovq" firstAttribute="leading" secondItem="gzb-iF-1Ir" secondAttribute="leading" constant="20" id="zSX-Ks-DT2"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="6UF-6i-hL8" id="k8Y-O1-9jC"/>
-                            <outlet property="delegate" destination="6UF-6i-hL8" id="iwH-EZ-go1"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Bookmarks" id="kop-9i-wg6">
-                        <barButtonItem key="leftBarButtonItem" image="img_back" id="ZI1-Qk-ves">
-                            <color key="tintColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="backButtonTappedAction:" destination="6UF-6i-hL8" id="i6Q-Ai-Jlp"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fAz-5K-pQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1747.826086956522" y="882.88043478260875"/>
         </scene>
         <!--Find Address-->
         <scene sceneID="AgG-8M-FUy">
@@ -478,16 +339,60 @@
             </objects>
             <point key="canvasLocation" x="1724.6376811594205" y="122.28260869565219"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ztv-xR-x5R">
+        <!--Bookmarks-->
+        <scene sceneID="g0G-uh-jkI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="njc-y8-jOa" sceneMemberID="viewController">
+                <viewController id="vF7-cx-ZGz" customClass="BookmarkViewController" customModule="addressFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jcC-7d-7Ky"/>
+                        <viewControllerLayoutGuide type="bottom" id="PrO-gq-hCX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aND-dS-rxs">
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fnW-dl-T9m">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vF7-cx-ZGz" id="MbQ-dd-64D"/>
+                                    <outlet property="delegate" destination="vF7-cx-ZGz" id="ydX-gi-Q65"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fnW-dl-T9m" firstAttribute="top" secondItem="jcC-7d-7Ky" secondAttribute="bottom" id="5f7-cl-Lig"/>
+                            <constraint firstItem="PrO-gq-hCX" firstAttribute="top" secondItem="fnW-dl-T9m" secondAttribute="bottom" id="la5-pd-qEA"/>
+                            <constraint firstAttribute="trailing" secondItem="fnW-dl-T9m" secondAttribute="trailing" id="ucu-eK-LHi"/>
+                            <constraint firstItem="fnW-dl-T9m" firstAttribute="leading" secondItem="aND-dS-rxs" secondAttribute="leading" id="zrI-pT-tDk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Bookmarks" id="WMg-ff-IRa">
+                        <barButtonItem key="leftBarButtonItem" image="img_back" id="2E1-WD-TWq">
+                            <color key="tintColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backButtonTappedAction:" destination="vF7-cx-ZGz" id="Ntc-Sx-yPd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="fnW-dl-T9m" id="qg0-Be-nzZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PoB-Xw-oVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842" y="900"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="npE-Qj-YbW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D8g-Gz-5oz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" backIndicatorImage="img_back" id="Dws-xk-QO7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="eNB-ww-Gwt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -495,17 +400,15 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="6UF-6i-hL8" kind="relationship" relationship="rootViewController" id="WL2-0O-Zhx"/>
+                        <segue destination="vF7-cx-ZGz" kind="relationship" relationship="rootViewController" id="PQo-R5-faA"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5xo-Co-ptH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5U9-Q6-hra" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840.57971014492762" y="882.88043478260875"/>
+            <point key="canvasLocation" x="841" y="900"/>
         </scene>
     </scenes>
     <resources>
-        <image name="eye@1" width="21" height="12"/>
-        <image name="garbage" width="21" height="24"/>
         <image name="img_back" width="14" height="25"/>
     </resources>
     <color key="tintColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
