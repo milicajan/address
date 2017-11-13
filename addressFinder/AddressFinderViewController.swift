@@ -15,4 +15,9 @@ class AddressFinderViewController: UIViewController {
     @IBOutlet weak var findAddressButton: UIButton!
     @IBOutlet weak var bookmarkAddressButton: UIButton!
     
+    // MARK: UIStatusBarStyle
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

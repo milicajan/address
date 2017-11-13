@@ -20,13 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let attributes = [NSFontAttributeName : UIFont(name: "Oswald-Regular", size: 24)!, NSForegroundColorAttributeName: UIColor(red: 228.0/255.0, green: 247.0/255.0, blue: 255.0/255.0, alpha: 1.0)]
         UINavigationBar.appearance().titleTextAttributes = attributes
-      
-      let BarButtonItemAppearance = UIBarButtonItem.appearance()
-      UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.normal)
-      UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.highlighted)
-      
-    
-      return true
+        
+        let BarButtonItemAppearance = UIBarButtonItem.appearance()
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.highlighted)
+        
+        UINavigationBar.appearance().barStyle = .blackOpaque
+        
+        
+        return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

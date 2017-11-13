@@ -14,11 +14,9 @@ class MapViewController: UIViewController {
     // MARK: Outlets
     
     @IBOutlet weak var mapView: MKMapView!
-    
     @IBOutlet weak var bookmarkButton: UIButton!
-    // MARK: Actions
     
-     // Variables
+    // Variables
     
     let regionRadius: CLLocationDistance = 1000
     var address = Address(title: "", locationName: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
@@ -33,7 +31,8 @@ class MapViewController: UIViewController {
         
         mapView.addAnnotation(address)
         mapView.delegate = self
-    
+        
+       
     }
     
     // MARK: CLLocation methode
@@ -46,6 +45,7 @@ class MapViewController: UIViewController {
     
 }
 
+// MARK: Extension
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
