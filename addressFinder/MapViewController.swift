@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import  CoreData
 
 class MapViewController: UIViewController {
     
@@ -19,7 +20,8 @@ class MapViewController: UIViewController {
     // Variables
     
     let regionRadius: CLLocationDistance = 1000
-    var address = Address(title: "", locationName: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
+    var address = Address(title: "", city: "", state: "", postal: "",  coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
+    var managedObjectContext: NSManagedObjectContext!
     
     // MARK: View lifecycle
     
@@ -43,6 +45,10 @@ class MapViewController: UIViewController {
         
     }
     
+    @IBAction func saveLocation(_ sender: UIButton) {
+        
+        
+    }
 }
 
 // MARK: Extension

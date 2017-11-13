@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import MapKit
-
+import CoreData
 
 class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
@@ -26,7 +26,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: View lifecycle
     
-    var address = Address(title: "", locationName: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
+    var address = Address(title: "", city: "", state: "", postal: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
+    var managedObjectContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,13 +71,6 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     func textFieldStyleSuccess(_ view: MyCustomView) {
         view.underlineView.backgroundColor = Constants.underlineColor.Success
         view.label.isHidden = true
-    }
-    
-    func textFieldStyleWrongAddress(_ view: MyCustomView) {
-        view.underlineView.backgroundColor = Constants.underlineColor.Error
-        view.label.isHidden = false
-        view.label.text = Constants.Message.wrongAddress
-        
     }
     
     func textFieldStyleError(_ view: MyCustomView) {
@@ -267,27 +261,26 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                         print(json)
                         if !(json["candidates"].array?.isEmpty)! {
                             let firstLocation =  json["candidates"][0].dictionary
-                            let address = firstLocation?["address"]?.string
+                            let location = firstLocation?["address"]?.string
                             let lat = firstLocation?["location"]?["x"].doubleValue
                             let long = firstLocation?["location"]?["y"].doubleValue
-                            let title = "Location"
                             
-                            self.address = Address(title: address!,
-                                                   locationName: title,
+                            
+                            self.address = Address(title: address,
+                                                   city: city,
+                                                   state: state,
+                                                   postal: postal,
                                                    coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
                             
                             self.performSegue(withIdentifier: "showLocation", sender: self.address)
                         }
                         else {
-                            self.textFieldStyleWrongAddress(self.addressCustomView)
-                            self.textFieldStyleWrongAddress(self.cityCustomView)
-                            self.textFieldStyleWrongAddress(self.stateCustomView)
-                            self.textFieldStyleWrongAddress(self.postalCustomView)
+                           self.showAlertWrongAddress()
                         }
                         
                     case .failure(let error):
                         if let error = error as? URLError, error.code == URLError.notConnectedToInternet {
-                            self.showNetworkError()
+                            self.showAlertNetworkError()
                         } else {
                             print("Error fetching address \(error)")
                         }
@@ -302,7 +295,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Alert
     
-    func showNetworkError() {
+    func showAlertNetworkError() {
         let alert = UIAlertController(title: "NETWORK ERROR", message: "There is no internet connection.Please try again.",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title:"OK", style: .default, handler: nil)
@@ -312,12 +305,22 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func showAlertWrongAddress() {
+        let alert  = UIAlertController(title: "WRONG ADDRESS", message: "Your address does not exist. Please check again.",
+                                       preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion:  nil)
+    }
+    
     // MARK: Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLocation" {
             let mapViewController = segue.destination as! MapViewController
             mapViewController.address = self.address
+            mapViewController.managedObjectContext = managedObjectContext
             navigationItem.backBarButtonItem?.title = ""
             
         }

@@ -24,4 +24,12 @@ struct  Constants {
     static let postalErrorMax = "Maximum 6 digits"
     static let wrongAddress = "Input correct address"
   }
+    
+    struct TableViewCellIdentifiers {
+        static let locationCell = "locationCell"
+ }
+    let applicationDocumentsDirectory: URL = {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        return paths[0]
+    }()
 }

@@ -12,12 +12,6 @@ class  BookmarkViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    struct TableViewCellIdentifiers {
-        static let locationCell = "locationCell"
-        
-    }
-    
-    
     // MARK: Action
     
     @IBAction func backButtonTappedAction(_ sender: UIBarButtonItem) {
@@ -28,7 +22,7 @@ class  BookmarkViewController: UIViewController {
         super.viewDidLoad()
         
         let cellNib = UINib(nibName: "MyCustomCell", bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.locationCell)
+        tableView.register(cellNib, forCellReuseIdentifier: Constants.TableViewCellIdentifiers.locationCell)
         tableView.rowHeight = 120
     }
 }
@@ -45,7 +39,7 @@ extension BookmarkViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.locationCell, for: indexPath) as! MyCustomCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCellIdentifiers.locationCell, for: indexPath) as! MyCustomCellTableViewCell
         
         cell.addressLabel.text = "Novosadsog sajma 2"
         cell.cityLabel.text = "Novi Sad"

@@ -114,10 +114,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMs-5O-i4B" customClass="MyCustomView" customModule="addressFinder" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="220" width="374" height="40"/>
+                                                <rect key="frame" x="20" y="220" width="374" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="bTW-Bs-Tyf"/>
+                                                    <constraint firstAttribute="height" constant="44" id="bTW-Bs-Tyf"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="myPlaceholder" value="Address"/>
@@ -131,10 +131,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRL-y9-sKO" customClass="MyCustomView" customModule="addressFinder" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="280" width="374" height="40"/>
+                                                <rect key="frame" x="20" y="284" width="374" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="QCg-OO-KGi"/>
+                                                    <constraint firstAttribute="height" constant="44" id="QCg-OO-KGi"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="myPlaceholder" value="City"/>
@@ -148,10 +148,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbG-Zi-Nvg" customClass="MyCustomView" customModule="addressFinder" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="340" width="374" height="40"/>
+                                                <rect key="frame" x="20" y="348" width="374" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="qAf-Os-uEe"/>
+                                                    <constraint firstAttribute="height" constant="44" id="qAf-Os-uEe"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="myPlaceholder" value="State"/>
@@ -165,10 +165,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9S-xx-3Lo" customClass="MyCustomView" customModule="addressFinder" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="400" width="374" height="40"/>
+                                                <rect key="frame" x="20" y="412" width="374" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="Da3-Qv-fRH"/>
+                                                    <constraint firstAttribute="height" constant="44" id="Da3-Qv-fRH"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="myPlaceholder" value="Postal"/>
@@ -292,6 +292,9 @@
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveLocation:" destination="mh0-3u-bIf" eventType="touchUpInside" id="bpV-Pl-bOk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -309,6 +312,7 @@
                     <connections>
                         <outlet property="bookmarkButton" destination="CFJ-XM-Zw7" id="P5f-zT-gq7"/>
                         <outlet property="mapView" destination="AiN-dK-t0P" id="hL6-um-Xdy"/>
+                        <outlet property="saveLocationTapButtonAction" destination="CFJ-XM-Zw7" id="R3A-TS-Anr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzM-YD-kcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
