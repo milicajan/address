@@ -29,8 +29,7 @@ class MyCustomCellTableViewCell: UITableViewCell {
         self.delegate?.deleteButtonTapped(at: indexPath)
         
     }
-    
-    
+
  @IBOutlet weak var showLocation: UIButton!
 
 override func awakeFromNib() {

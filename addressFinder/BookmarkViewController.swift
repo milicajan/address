@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsButtonsDelegate {
+class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsButtonsDelegate, ButtonTappedDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var locations: [Location] = []
@@ -55,46 +55,51 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
         return cell
         
     }
+  
+  
+  func fetchTheData() {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func fetchTheData() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        do {
-            
-            locations = try context.fetch(Location.fetchRequest())
-            
-        } catch {
-            print("Fetching Faild")
-        }
+    do {
+      
+      locations = try context.fetch(Location.fetchRequest())
+      
+    } catch {
+      print("Fetching Faild")
+    }
+  }
+  
+  func yesButtonTapped()-> Bool {
+    return true
+  }
+  func noButtonTapped()-> Bool {
+    return true
+  }
+  
+  func deleteButtonTapped(at index: IndexPath) {
+    
+    performSegue(withIdentifier: "showPopUp", sender: index)
+    
+    if noButtonTapped() {
+      dismiss(animated: true, completion: nil)
     }
     
-   
+    if yesButtonTapped() {
+      dismiss(animated: true, completion: {
     
-    func deleteButtonTapped(at index: IndexPath) {
-        
-        
-        let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "popUpID") as! PopUpViewController
-        
-        
-       // self.addChildViewController(popUpVC)
-       // popUpVC.view.frame = self.view.frame
-        //self.view.addSubview(popUpVC.view)
-        //popUpVC.didMove(toParentViewController: self)
-        
-        //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-       // let location = locations[index.row]
-       // context.delete(location)
-       // (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
-       // do {
-       //     locations = try context.fetch(Location.fetchRequest())
-       // } catch {
-       //     print("Fetching faild")
-       // }
-        
-       // tableView.reloadData()
-        
-    //}
- }
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let location = self.locations[index.row]
+    context.delete(location)
+    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    
+    do {
+      self.locations = try context.fetch(Location.fetchRequest())
+    } catch {
+      print("Fetching faild")
+    }
+  
+  self.tableView.reloadData()
+      }
+    )}
 }
-
+}

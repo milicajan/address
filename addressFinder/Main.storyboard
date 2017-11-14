@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="17B48" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -386,6 +386,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="fnW-dl-T9m" id="qg0-Be-nzZ"/>
+                        <segue destination="C4L-6u-Y9z" kind="presentation" identifier="showPopUp" id="H0P-rj-W0j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PoB-Xw-oVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -449,9 +450,12 @@
                                                 <integer key="value" value="3"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="yesButtonTapAction:" destination="C4L-6u-Y9z" eventType="touchUpInside" id="Mu0-Mh-Ect"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.90338720034246578" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="I4c-sv-r7x" secondAttribute="trailing" constant="40" id="7RS-hg-kpt"/>
                                     <constraint firstAttribute="bottom" secondItem="S78-92-mvo" secondAttribute="bottom" constant="20" id="8X8-UR-uk1"/>
@@ -469,7 +473,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Yc7-96-NPR" firstAttribute="centerY" secondItem="NbC-V8-CIO" secondAttribute="centerY" id="3MJ-Tw-TJL"/>
                             <constraint firstAttribute="trailing" secondItem="Yc7-96-NPR" secondAttribute="trailing" constant="20" id="Cnw-0h-vC6"/>
