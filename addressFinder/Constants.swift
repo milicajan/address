@@ -28,8 +28,4 @@ struct  Constants {
     struct TableViewCellIdentifiers {
         static let locationCell = "locationCell"
  }
-    let applicationDocumentsDirectory: URL = {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        return paths[0]
-    }()
 }

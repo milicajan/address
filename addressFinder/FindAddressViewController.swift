@@ -27,7 +27,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     // MARK: View lifecycle
     
     var address = Address(title: "", city: "", state: "", postal: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
-    var managedObjectContext: NSManagedObjectContext!
+    //var managedObjectContext: NSManagedObjectContext!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -320,7 +321,6 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         if segue.identifier == "showLocation" {
             let mapViewController = segue.destination as! MapViewController
             mapViewController.address = self.address
-            mapViewController.managedObjectContext = managedObjectContext
             navigationItem.backBarButtonItem?.title = ""
             
         }

@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Oswald-Bold.ttf">
+            <string>Oswald-Bold</string>
+        </array>
         <array key="Oswald-Regular.ttf">
             <string>Oswald-Regular</string>
         </array>
@@ -65,7 +68,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeh-ES-wpQ">
-                                <rect key="frame" x="143.33333333333331" y="40" width="127.99999999999994" height="32.666666666666671"/>
+                                <rect key="frame" x="143" y="40" width="128" height="33"/>
                                 <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="24"/>
                                 <color key="textColor" red="0.9137254901960784" green="0.93725490196078431" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -310,9 +313,8 @@
                     <navigationItem key="navigationItem" title="View Address" id="VcL-TY-IP1"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="bookmarkButton" destination="CFJ-XM-Zw7" id="P5f-zT-gq7"/>
+                        <outlet property="bookmarkButton" destination="CFJ-XM-Zw7" id="zcy-Y3-vSh"/>
                         <outlet property="mapView" destination="AiN-dK-t0P" id="hL6-um-Xdy"/>
-                        <outlet property="saveLocationTapButtonAction" destination="CFJ-XM-Zw7" id="R3A-TS-Anr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzM-YD-kcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -359,6 +361,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vF7-cx-ZGz" id="MbQ-dd-64D"/>
                                     <outlet property="delegate" destination="vF7-cx-ZGz" id="ydX-gi-Q65"/>
@@ -388,6 +391,98 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PoB-Xw-oVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1842" y="900"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="nUu-Id-4iU">
+            <objects>
+                <viewController storyboardIdentifier="popUpID" id="C4L-6u-Y9z" customClass="PopUpViewController" customModule="addressFinder" customModuleProvider="target" colorLabel="IBBuiltInLabel-Gray" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lpn-47-IwY"/>
+                        <viewControllerLayoutGuide type="bottom" id="e0J-te-9hS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NbC-V8-CIO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="Yc7-96-NPR" userLabel="Pop-up View">
+                                <rect key="frame" x="20" y="304" width="374" height="128"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lP-ih-M80">
+                                        <rect key="frame" x="20" y="78" width="120" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.25098039220000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="7zS-P9-qSI"/>
+                                            <constraint firstAttribute="height" constant="30" id="oTq-3u-4cZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="15"/>
+                                        <state key="normal" title="NO">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="noButtonTappedAction:" destination="C4L-6u-Y9z" eventType="touchUpInside" id="C3O-IN-x3A"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to delete bookmark?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4c-sv-r7x">
+                                        <rect key="frame" x="40" y="20" width="294" height="22"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S78-92-mvo">
+                                        <rect key="frame" x="234" y="78" width="120" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="D2G-yl-5ri"/>
+                                            <constraint firstAttribute="height" constant="30" id="Mly-iV-JJf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="15"/>
+                                        <state key="normal" title="YES">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="I4c-sv-r7x" secondAttribute="trailing" constant="40" id="7RS-hg-kpt"/>
+                                    <constraint firstAttribute="bottom" secondItem="S78-92-mvo" secondAttribute="bottom" constant="20" id="8X8-UR-uk1"/>
+                                    <constraint firstItem="7lP-ih-M80" firstAttribute="leading" secondItem="Yc7-96-NPR" secondAttribute="leading" constant="20" id="IDu-rR-ZXO"/>
+                                    <constraint firstAttribute="bottom" secondItem="7lP-ih-M80" secondAttribute="bottom" constant="20" id="IHy-RZ-N51"/>
+                                    <constraint firstItem="I4c-sv-r7x" firstAttribute="leading" secondItem="Yc7-96-NPR" secondAttribute="leading" constant="40" id="Luw-fE-Lxh"/>
+                                    <constraint firstAttribute="trailing" secondItem="S78-92-mvo" secondAttribute="trailing" constant="20" id="WGD-hG-tnf"/>
+                                    <constraint firstItem="S78-92-mvo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7lP-ih-M80" secondAttribute="trailing" constant="20" id="ela-s6-XPP"/>
+                                    <constraint firstItem="I4c-sv-r7x" firstAttribute="top" secondItem="Yc7-96-NPR" secondAttribute="top" constant="20" id="oq0-K8-tpR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yc7-96-NPR" firstAttribute="centerY" secondItem="NbC-V8-CIO" secondAttribute="centerY" id="3MJ-Tw-TJL"/>
+                            <constraint firstAttribute="trailing" secondItem="Yc7-96-NPR" secondAttribute="trailing" constant="20" id="Cnw-0h-vC6"/>
+                            <constraint firstItem="Yc7-96-NPR" firstAttribute="top" secondItem="Lpn-47-IwY" secondAttribute="bottom" constant="284" id="IfK-0J-5TS"/>
+                            <constraint firstItem="Yc7-96-NPR" firstAttribute="centerX" secondItem="NbC-V8-CIO" secondAttribute="centerX" id="qdb-gq-pkH"/>
+                            <constraint firstItem="Yc7-96-NPR" firstAttribute="leading" secondItem="NbC-V8-CIO" secondAttribute="leading" constant="20" id="tgu-4d-3XQ"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Msi-H8-HhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2828" y="904"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="npE-Qj-YbW">

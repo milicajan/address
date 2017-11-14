@@ -8,8 +8,12 @@
 
 import UIKit
 
-class MyCustomCellTableViewCell: UITableViewCell {
+protocol OptionsButtonsDelegate {
+    func deleteButtonTapped(at index:IndexPath)
+}
 
+class MyCustomCellTableViewCell: UITableViewCell {
+    
     // MARK: Outlets
     
     @IBOutlet weak var addressLabel: UILabel!
@@ -17,18 +21,25 @@ class MyCustomCellTableViewCell: UITableViewCell {
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var postalLabel: UILabel!
     
+    var delegate:OptionsButtonsDelegate!
     @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var showLocation: UIButton!
+   
+    var indexPath:IndexPath!
+    @IBAction func deleteLocationTapButton(_ sender: UIButton) {
+        self.delegate?.deleteButtonTapped(at: indexPath)
+        
+    }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    
+ @IBOutlet weak var showLocation: UIButton!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
 }
+
+override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+}
+}
+

@@ -24,47 +24,47 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Axi-LM-Bvx" id="0Nb-tX-1Mo">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="119.66666666666667"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="754" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8N-dj-9e6">
-                        <rect key="frame" x="10" y="10" width="56.333333333333329" height="22"/>
+                        <rect key="frame" x="10" y="10.000000000000002" width="63.666666666666671" height="18.666666666666671"/>
                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="754" text="City:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTP-5x-73D">
-                        <rect key="frame" x="10" y="37" width="30.666666666666664" height="22"/>
+                        <rect key="frame" x="10" y="33.666666666666664" width="32.666666666666664" height="18.666666666666671"/>
                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="753" text="State:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2h-Ij-bmP">
-                        <rect key="frame" x="10" y="64" width="39.333333333333336" height="22"/>
+                        <rect key="frame" x="10" y="57.333333333333343" width="42.333333333333336" height="18.666666666666657"/>
                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Postal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBy-Wf-giA">
-                        <rect key="frame" x="9.9999999999999964" y="91" width="45.666666666666657" height="18.666666666666671"/>
+                        <rect key="frame" x="10.000000000000004" y="81" width="49.333333333333343" height="28.666666666666671"/>
                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novosadsog sajma 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czc-sv-5gj">
-                        <rect key="frame" x="74" y="10" width="117" height="22"/>
+                        <rect key="frame" x="73.999999999999986" y="10.000000000000002" width="150.66666666666663" height="18.666666666666671"/>
                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novi Sad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hos-Le-S52">
-                        <rect key="frame" x="74" y="37" width="50.333333333333329" height="22"/>
+                        <rect key="frame" x="74" y="33.666666666666664" width="65.333333333333343" height="18.666666666666671"/>
                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serbia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqw-xf-eXd">
-                        <rect key="frame" x="74" y="64" width="37.333333333333329" height="22"/>
+                        <rect key="frame" x="74" y="57.333333333333343" width="46" height="18.666666666666657"/>
                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -72,13 +72,16 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dn8-5k-e0f">
                         <rect key="frame" x="334" y="20" width="21" height="24"/>
                         <state key="normal" image="garbage"/>
+                        <connections>
+                            <action selector="deleteLocationTapButton:" destination="Axi-LM-Bvx" eventType="touchUpInside" id="rk8-gR-IOg"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spy-mK-Dh0">
-                        <rect key="frame" x="334" y="77.666666666666671" width="21" height="22"/>
+                        <rect key="frame" x="334" y="59" width="21" height="22"/>
                         <state key="normal" image="eye@1"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfD-S4-0Kc">
-                        <rect key="frame" x="74" y="87.666666666666671" width="39" height="22"/>
+                        <rect key="frame" x="74" y="91" width="44.666666666666671" height="18.666666666666671"/>
                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -93,7 +96,6 @@
                     <constraint firstItem="Y8N-dj-9e6" firstAttribute="top" secondItem="0Nb-tX-1Mo" secondAttribute="top" constant="10" id="HwR-sQ-zce"/>
                     <constraint firstItem="czc-sv-5gj" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leadingMargin" constant="66" id="IFH-8I-wDM"/>
                     <constraint firstItem="MfD-S4-0Kc" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leadingMargin" constant="66" id="LvG-lv-mUd"/>
-                    <constraint firstAttribute="bottom" secondItem="spy-mK-Dh0" secondAttribute="bottom" constant="20" id="MRC-Vd-yis"/>
                     <constraint firstItem="hos-Le-S52" firstAttribute="baseline" secondItem="ZTP-5x-73D" secondAttribute="baseline" id="RTQ-G5-mbd"/>
                     <constraint firstItem="ZTP-5x-73D" firstAttribute="top" secondItem="Y8N-dj-9e6" secondAttribute="bottom" constant="5" id="UEm-xW-Uyi"/>
                     <constraint firstAttribute="trailing" secondItem="spy-mK-Dh0" secondAttribute="trailing" constant="20" id="Xrm-wh-nND"/>
@@ -105,16 +107,16 @@
                     <constraint firstItem="Cqw-xf-eXd" firstAttribute="baseline" secondItem="G2h-Ij-bmP" secondAttribute="baseline" id="hsy-ky-n1o"/>
                     <constraint firstItem="MfD-S4-0Kc" firstAttribute="baseline" secondItem="wBy-Wf-giA" secondAttribute="baseline" id="js4-Hx-Cpm"/>
                     <constraint firstItem="Cqw-xf-eXd" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leadingMargin" constant="66" id="tSk-97-THg"/>
+                    <constraint firstItem="spy-mK-Dh0" firstAttribute="top" secondItem="dn8-5k-e0f" secondAttribute="bottom" constant="15" id="uJM-HE-iNs"/>
                     <constraint firstItem="ZTP-5x-73D" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leading" constant="10" id="uJh-0u-VaP"/>
                     <constraint firstItem="Y8N-dj-9e6" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leading" constant="10" id="uqQ-qv-4A9"/>
-                    <constraint firstItem="spy-mK-Dh0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dn8-5k-e0f" secondAttribute="bottom" constant="5" id="uzl-oY-agl"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="addressLabel" destination="czc-sv-5gj" id="7eb-2K-KzA"/>
                 <outlet property="cityLabel" destination="hos-Le-S52" id="CQd-qh-l36"/>
-                <outlet property="deleteButton" destination="dn8-5k-e0f" id="HVb-vQ-UMQ"/>
+                <outlet property="deleteButton" destination="dn8-5k-e0f" id="6ya-js-rF4"/>
                 <outlet property="postalLabel" destination="MfD-S4-0Kc" id="svJ-Aq-SJL"/>
                 <outlet property="showLocation" destination="spy-mK-Dh0" id="L0w-be-g5x"/>
                 <outlet property="stateLabel" destination="Cqw-xf-eXd" id="MHi-8l-e6t"/>
