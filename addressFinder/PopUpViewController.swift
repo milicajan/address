@@ -7,27 +7,30 @@
 //
 
 import UIKit
-import CoreData
+
+protocol PopUpViewDelegate {
+  func noButtonPressed()
+  func yesButtonPressed()
+}
 
 class PopUpViewController: UIViewController {
-    
-    var cell = MyCustomCellTableViewCell()
-    
-      @IBAction func yesButtonTapAction(_ sender: UIButton) {
-        
-        }
-    
-    @IBAction func noButtonTappedAction(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        modalPresentationStyle = .custom
-        transitioningDelegate = self
-    }
-    
+  
+  
+  var delegate: PopUpViewDelegate!
+  @IBAction func yesButtonTapAction(_ sender: UIButton) {
+    self.delegate?.yesButtonPressed()
+  }
+  
+  @IBAction func noButtonTappedAction(_ sender: UIButton) {
+    self.delegate?.noButtonPressed()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    modalPresentationStyle = .custom
+    transitioningDelegate = self
+  }
+  
   
   
   override func viewDidLoad() {

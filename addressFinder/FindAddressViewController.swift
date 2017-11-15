@@ -254,7 +254,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             // "Zip": "95064",
             // "f": "pjson"]
             
-            showAlertLoading()
+            //showAlertLoading()
             
             Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
                 DispatchQueue.main.async( execute: {
@@ -278,7 +278,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                                                    postal: postal,
                                                    coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
                             
-                           self.dismiss(animated: false, completion: nil)
+                           //self.dismiss(animated: false, completion: nil)
                            self.performSegue(withIdentifier: "showLocation", sender: self.address)
                         }
                         else {
