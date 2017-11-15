@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +22,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCustomCellTableViewCell" customModule="addressFinder" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" id="Axi-LM-Bvx" customClass="MyCustomCellTableViewCell" customModule="addressFinder" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="locationCell" id="Axi-LM-Bvx" customClass="MyCustomCellTableViewCell" customModule="addressFinder" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Axi-LM-Bvx" id="0Nb-tX-1Mo">
@@ -46,7 +48,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Postal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBy-Wf-giA">
-                        <rect key="frame" x="10.000000000000004" y="81" width="49.333333333333343" height="28.666666666666671"/>
+                        <rect key="frame" x="10.000000000000004" y="81" width="49.333333333333343" height="29"/>
                         <fontDescription key="fontDescription" name="Oswald-Bold" family="Oswald" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -79,9 +81,12 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spy-mK-Dh0">
                         <rect key="frame" x="334" y="59" width="21" height="22"/>
                         <state key="normal" image="eye@1"/>
+                        <connections>
+                            <action selector="showLocationOnMap:" destination="Axi-LM-Bvx" eventType="touchUpInside" id="A6w-uz-YRt"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MfD-S4-0Kc">
-                        <rect key="frame" x="74" y="91" width="44.666666666666671" height="18.666666666666671"/>
+                        <rect key="frame" x="74" y="81" width="44.666666666666671" height="18.666666666666671"/>
                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -105,7 +110,7 @@
                     <constraint firstItem="dn8-5k-e0f" firstAttribute="top" secondItem="0Nb-tX-1Mo" secondAttribute="top" constant="20" id="e6z-IF-o7x"/>
                     <constraint firstAttribute="bottom" secondItem="wBy-Wf-giA" secondAttribute="bottom" constant="10" id="epY-2D-Mp3"/>
                     <constraint firstItem="Cqw-xf-eXd" firstAttribute="baseline" secondItem="G2h-Ij-bmP" secondAttribute="baseline" id="hsy-ky-n1o"/>
-                    <constraint firstItem="MfD-S4-0Kc" firstAttribute="baseline" secondItem="wBy-Wf-giA" secondAttribute="baseline" id="js4-Hx-Cpm"/>
+                    <constraint firstItem="MfD-S4-0Kc" firstAttribute="baseline" secondItem="wBy-Wf-giA" secondAttribute="firstBaseline" id="ih0-gk-Q4c"/>
                     <constraint firstItem="Cqw-xf-eXd" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leadingMargin" constant="66" id="tSk-97-THg"/>
                     <constraint firstItem="spy-mK-Dh0" firstAttribute="top" secondItem="dn8-5k-e0f" secondAttribute="bottom" constant="15" id="uJM-HE-iNs"/>
                     <constraint firstItem="ZTP-5x-73D" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leading" constant="10" id="uJh-0u-VaP"/>

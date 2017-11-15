@@ -34,10 +34,6 @@ class MapViewController: UIViewController {
         zoomMapOnLocation(location: address)
         mapView.addAnnotation(address)
         mapView.delegate = self
-        
-    
-       
-       
     }
     
     // MARK: CLLocation methode

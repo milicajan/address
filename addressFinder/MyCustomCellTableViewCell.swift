@@ -9,7 +9,8 @@
 import UIKit
 
 protocol OptionsButtonsDelegate {
-    func deleteButtonTapped(at index:IndexPath)
+    func deleteButtonTapped(at index: IndexPath)
+    func showLocationButtonTapped(at index: IndexPath)
 }
 
 class MyCustomCellTableViewCell: UITableViewCell {
@@ -24,13 +25,18 @@ class MyCustomCellTableViewCell: UITableViewCell {
     var delegate:OptionsButtonsDelegate!
     @IBOutlet weak var deleteButton: UIButton!
    
-    var indexPath:IndexPath!
+    var indexPath: IndexPath!
     @IBAction func deleteLocationTapButton(_ sender: UIButton) {
         self.delegate?.deleteButtonTapped(at: indexPath)
         
     }
 
  @IBOutlet weak var showLocation: UIButton!
+    
+    @IBAction func showLocationOnMap(_ sender: UIButton) {
+        self.delegate?.showLocationButtonTapped(at: indexPath)
+    }
+    
 
 override func awakeFromNib() {
     super.awakeFromNib()

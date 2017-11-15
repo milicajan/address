@@ -8,11 +8,15 @@
 
 import UIKit
 import CoreData
+import MapKit
 
-class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsButtonsDelegate, ButtonTappedDelegate {
+class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsButtonsDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var locations: [Location] = []
+    var index: IndexPath!
+    
+    var fullAddress = Address(title: "", city: "", state: "", postal: "",  coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
     
     // MARK: Action
     
@@ -22,15 +26,18 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
         
         let cellNib = UINib(nibName: "MyCustomCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: Constants.TableViewCellIdentifiers.locationCell)
         tableView.rowHeight = 120
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        fetchTheData()
         tableView.reloadData()
+        fetchTheData()
     }
     
     //MARK: TableView DataSource
@@ -45,61 +52,83 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
         cell.delegate = self
         cell.indexPath = indexPath
         let location = locations[indexPath.row]
+      
         
         cell.addressLabel.text = location.address
         cell.cityLabel.text = location.city
         cell.stateLabel.text = location.state
         cell.postalLabel.text = location.postal
-      
-    
-        return cell
+        
+       return cell
         
     }
-  
+    
   
   func fetchTheData() {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     do {
       
-      locations = try context.fetch(Location.fetchRequest())
-      
+      self.locations = try context.fetch(Location.fetchRequest())
     } catch {
       print("Fetching Faild")
     }
   }
   
-  func yesButtonTapped()-> Bool {
-    return true
-  }
-  func noButtonTapped()-> Bool {
-    return true
-  }
-  
-  func deleteButtonTapped(at index: IndexPath) {
+    // MARK: Delegate methodes
     
-    performSegue(withIdentifier: "showPopUp", sender: index)
-    
-    if noButtonTapped() {
-      dismiss(animated: true, completion: nil)
+    func deleteButtonTapped(at index: IndexPath) {
+        self.index = index
+        performSegue(withIdentifier: "showPopUp", sender: self.index)
+        tableView.reloadData()
+        
     }
     
-    if yesButtonTapped() {
-      dismiss(animated: true, completion: {
+    func showLocationButtonTapped(at index: IndexPath) {
+        
+        let location = locations[index.row]
+        let address = location.address
+        let city = location.city
+        let state = location.state
+        let postal = location.postal
+        let long = location.longitude
+        let lat = location.latitude
+        
+        let fullAddress = Address(title: address!,
+                                  city: city!,
+                                  state: state!,
+                                  postal: postal!,
+                                  coordinate: CLLocationCoordinate2D(latitude: lat , longitude: long))
+        
+        self.fullAddress = fullAddress
+        performSegue(withIdentifier: "showMap", sender: fullAddress)
+            }
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let location = self.locations[index.row]
-    context.delete(location)
-    (UIApplication.shared.delegate as! AppDelegate).saveContext()
     
-    do {
-      self.locations = try context.fetch(Location.fetchRequest())
-    } catch {
-      print("Fetching faild")
+    // MARK: Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMap" {
+            let mapViewController = segue.destination as! MapViewController
+            mapViewController.address = fullAddress
+        } else if segue.identifier == "showPopUp" {
+            let popUpViewController = segue.destination as! PopUpViewController
+            popUpViewController.index = self.index
+            popUpViewController.locations = self.locations
+            popUpViewController.tableView = self.tableView
     }
-  
-  self.tableView.reloadData()
-      }
-    )}
 }
-}
+
+
+       /* let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let location = locations[index.row]
+        context.delete(location)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        do {
+            self.locations = try context.fetch(Location.fetchRequest())
+        } catch {
+            print("Fetching faild")
+        }
+        
+        tableView.reloadData()
+    }*/}

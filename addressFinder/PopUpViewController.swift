@@ -7,33 +7,45 @@
 //
 
 import UIKit
-
-protocol ButtonTappedDelegate {
-  func yesButtonTapped()-> Bool
-  func noButtonTapped()-> Bool
-}
+import CoreData
 
 class PopUpViewController: UIViewController {
-  
-  var delegate: ButtonTappedDelegate!
-  
-  
-  @IBAction func yesButtonTapAction(_ sender: UIButton) {
-    self.delegate?.yesButtonTapped()
-  }
-  
-  @IBAction func noButtonTappedAction(_ sender: UIButton) {
-    self.delegate?.noButtonTapped() {
-      dismiss(animated: true, completion: nil)
+    
+    var index: IndexPath!
+    var locations: [Location] = []
+    var tableView: UITableView!
+    @IBAction func yesButtonTapAction(_ sender: UIButton) {
+        
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let location = locations[index.row]
+        let cell = tableView.cellForRow(at: index)
+        
+        context.delete(location)
+        //tableView.delete(cell)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        do {
+            self.locations = try context.fetch(Location.fetchRequest())
+        } catch {
+            print("Fetching faild")
+        }
+       
+        tableView.reloadData()
+        dismiss(animated: true, completion: nil)
     }
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    modalPresentationStyle = .custom
-    transitioningDelegate = self
-  }
-  
+    
+    @IBAction func noButtonTappedAction(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        modalPresentationStyle = .custom
+        transitioningDelegate = self
+    }
+    
   
   
   override func viewDidLoad() {
