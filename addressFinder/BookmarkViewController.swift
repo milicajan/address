@@ -14,8 +14,7 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
     
     @IBOutlet weak var tableView: UITableView!
     var locations: [Location] = []
-    var index: IndexPath!
-    
+        
     var fullAddress = Address(title: "", city: "", state: "", postal: "",  coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
     
     // MARK: Action
@@ -78,9 +77,9 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
     // MARK: Delegate methodes
     
     func deleteButtonTapped(at index: IndexPath) {
-        self.index = index
+       // self.index = index
         performSegue(withIdentifier: "showPopUp", sender: self.index)
-        tableView.reloadData()
+      
         
     }
     
@@ -110,13 +109,8 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
         if segue.identifier == "showMap" {
             let mapViewController = segue.destination as! MapViewController
             mapViewController.address = fullAddress
-        } else if segue.identifier == "showPopUp" {
-            let popUpViewController = segue.destination as! PopUpViewController
-            popUpViewController.index = self.index
-            popUpViewController.locations = self.locations
-            popUpViewController.tableView = self.tableView
+        }
     }
-}
 
 
        /* let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

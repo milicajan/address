@@ -11,29 +11,11 @@ import CoreData
 
 class PopUpViewController: UIViewController {
     
-    var index: IndexPath!
-    var locations: [Location] = []
-    var tableView: UITableView!
-    @IBAction func yesButtonTapAction(_ sender: UIButton) {
+    var cell = MyCustomCellTableViewCell()
+    
+      @IBAction func yesButtonTapAction(_ sender: UIButton) {
         
-        
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let location = locations[index.row]
-        let cell = tableView.cellForRow(at: index)
-        
-        context.delete(location)
-        //tableView.delete(cell)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
-        do {
-            self.locations = try context.fetch(Location.fetchRequest())
-        } catch {
-            print("Fetching faild")
         }
-       
-        tableView.reloadData()
-        dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func noButtonTappedAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

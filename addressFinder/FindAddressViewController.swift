@@ -229,6 +229,9 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     func findAddress() {
         
+        
+        
+        
         if (searchLocation(addressCustomView)&&searchLocation(cityCustomView)&&searchLocation(stateCustomView)&&searchLocation(postalCustomView)) {
             
             guard let address = addressCustomView.textField.text else {return}
@@ -251,13 +254,15 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             // "Zip": "95064",
             // "f": "pjson"]
             
+            showAlertLoading()
+            
             Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
                 DispatchQueue.main.async( execute: {
                     
                     switch responseData.result {
                         
                     case .success:
-                        
+                       
                         let json = JSON(responseData.result.value as Any)
                         print(json)
                         if !(json["candidates"].array?.isEmpty)! {
@@ -273,7 +278,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                                                    postal: postal,
                                                    coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
                             
-                            self.performSegue(withIdentifier: "showLocation", sender: self.address)
+                           self.dismiss(animated: false, completion: nil)
+                           self.performSegue(withIdentifier: "showLocation", sender: self.address)
                         }
                         else {
                            self.showAlertWrongAddress()
@@ -313,6 +319,18 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(action)
         
         present(alert, animated: true, completion:  nil)
+    }
+    
+    func  showAlertLoading()  {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: Segue
