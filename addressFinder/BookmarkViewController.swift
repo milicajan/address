@@ -10,19 +10,26 @@ import UIKit
 import CoreData
 import MapKit
 
-class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsButtonsDelegate, PopUpViewDelegate {
+class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDelegate, PopUpViewDelegate {
+    
+    // MARK: Outlets
     
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: Variables
+    
     var locations: [Location] = []
     var index: IndexPath!
-        
     var fullAddress = Address(title: "", city: "", state: "", postal: "",  coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
     
-    // MARK: Action
+    
+    // MARK: Actions
     
     @IBAction func backButtonTappedAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,35 +59,35 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
         cell.delegate = self
         cell.indexPath = indexPath
         let location = locations[indexPath.row]
-        self.index = indexPath
+       // self.index = cell.indexPath
         
         cell.addressLabel.text = location.address
         cell.cityLabel.text = location.city
         cell.stateLabel.text = location.state
         cell.postalLabel.text = location.postal
         
-       return cell
+        return cell
         
     }
     
-  
-  func fetchTheData() {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // MARK: CoreData methode
     
-    do {
-      
-      self.locations = try context.fetch(Location.fetchRequest())
-    } catch {
-      print("Fetching Faild")
+    func fetchTheData() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        do {
+            
+            self.locations = try context.fetch(Location.fetchRequest())
+        } catch {
+            print("Fetching Faild")
+        }
     }
-  }
-  
-    // MARK: Delegate methodes
+    
+    // MARK: CellDelegate methodes
     
     func deleteButtonTapped(at index: IndexPath) {
-       // self.index = index
-        performSegue(withIdentifier: "showPopUp", sender: self.index)
-      }
+        performSegue(withIdentifier: Constants.Identifier.popUpSegue, sender: self.index)
+    }
     
     func showLocationButtonTapped(at index: IndexPath) {
         
@@ -99,40 +106,17 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
                                   coordinate: CLLocationCoordinate2D(latitude: lat , longitude: long))
         
         self.fullAddress = fullAddress
-        performSegue(withIdentifier: "showMap", sender: fullAddress)
-            }
-  
-  func noButtonPressed(){
-    dismiss(animated: true, completion: nil)
-  }
-  
-  func  yesButtonPressed() {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let location = locations[index.row]
-    context.delete(location)
-    (UIApplication.shared.delegate as! AppDelegate).saveContext()
-    
-    do {
-      self.locations = try context.fetch(Location.fetchRequest())
-    } catch {
-      print("Fetching faild")
+        performSegue(withIdentifier: Constants.Identifier.mapSegue, sender: fullAddress)
     }
     
-    tableView.reloadData()
-    dismiss(animated: true, completion: nil)
-  }
-  
-    // MARK: Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showMap" {
-            let mapViewController = segue.destination as! MapViewController
-            mapViewController.address = fullAddress
-        } else if segue.identifier == "showPopUp" {
-      let popUpViewController = segue.destination as! PopUpViewController
-      popUpViewController.delegate = self
+    // MARK: PopUpViewDelegate
+    
+    func noButtonPressed(){
+        dismiss(animated: true, completion: nil)
     }
-  }
-       /* let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    func  yesButtonPressed() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let location = locations[index.row]
         context.delete(location)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -144,4 +128,17 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, OptionsB
         }
         
         tableView.reloadData()
-    }*/}
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.Identifier.mapSegue {
+            let mapViewController = segue.destination as! MapViewController
+            mapViewController.address = fullAddress
+        } else if segue.identifier == Constants.Identifier.popUpSegue {
+            let popUpViewController = segue.destination as! PopUpViewController
+            popUpViewController.delegate = self
+        }
+    }
+}

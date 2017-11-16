@@ -22,8 +22,6 @@ class MapViewController: UIViewController {
     let regionRadius: CLLocationDistance = 1000
     var address = Address(title: "", city: "", state: "", postal: "",  coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
     
-    //var managedObjectContext: NSManagedObjectContext!
-  
     // MARK: View lifecycle
     
     override func viewDidLoad() {
@@ -36,38 +34,13 @@ class MapViewController: UIViewController {
         mapView.delegate = self
     }
     
-    // MARK: CLLocation methode
-    
-    func zoomMapOnLocation(location: Address) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
-        
-    }
-    
-    
-    //func saveItem(itemToSave: Address){
-       
-     //   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//
-        
-        //**Note:** Here we are providing the entityName **`Entity`** that we have added in the model
-    //    let entity = NSEntityDescription.entity(forEntityName: "Location", in: context)
-    //    let myItem = NSManagedObject(entity: entity!, insertInto: context)
-        
-     //   myItem.setValue(itemToSave, forKey: "address")
-     //   do {
-           // try context.save()
-     //   }
-       // catch{
-       //     print("There was an error in saving data")
-       //
+    // MARK: Actions
     
     @IBAction func saveLocation(_ sender: UIButton) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
-        //let newLocation = NSEntityDescription.insertNewObject(forEntityName: "Location", into: context)
         
         let location = Location(context: context)
         location.address = address.title
@@ -80,11 +53,21 @@ class MapViewController: UIViewController {
         
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        locationIsSaved()
+        locationIsSavedAlert()
         
     }
     
-    func locationIsSaved() {
+    // MARK: CLLocation methode
+    
+    func zoomMapOnLocation(location: Address) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
+        
+    }
+    
+    // MARK: Alert methode
+    
+    func locationIsSavedAlert() {
         let alert = UIAlertController(title: "SAVED!", message: "Your location is saved successfully!",
                                       preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -94,7 +77,7 @@ class MapViewController: UIViewController {
     }
 }
 
-// MARK: Extension
+// MARK: MapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
     

@@ -14,17 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    
-    
-    //lazy var managedObjectContext: NSManagedObjectContext = self.persistentContainer.viewContext
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         let attributes = [NSFontAttributeName : UIFont(name: "Oswald-Regular", size: 24)!, NSForegroundColorAttributeName: UIColor(red: 228.0/255.0, green: 247.0/255.0, blue: 255.0/255.0, alpha: 1.0)]
         UINavigationBar.appearance().titleTextAttributes = attributes
         
-        let BarButtonItemAppearance = UIBarButtonItem.appearance()
+        _ = UIBarButtonItem.appearance()
         UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.highlighted)
         

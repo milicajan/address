@@ -17,15 +17,19 @@ struct  Constants {
   
   struct  Message {
     static let error = "This field is mandatory"
-    static let addressError = "Maximum 100"
-    static let cityError = "Maximum 50"
-    static let stateError = "Maximum 50"
-    static let postalErrorMin = "Minimum 1 digit"
-    static let postalErrorMax = "Maximum 6 digits"
-    static let wrongAddress = "Input correct address"
-  }
+    static let addressError = "You passed the limit.Input maximum 100 letters"
+    static let cityError = "You passed the limit. Input maximum 50 letters"
+    static let stateError = "You passed the limit. Input maximum 50 letters"
+    static let postalErrorMin = "Not enough input. Minimum is 1 digit"
+    static let postalErrorMax = "You passed the limit. Maximum limit is 6 digits"
+    }
     
     struct TableViewCellIdentifiers {
         static let locationCell = "locationCell"
  }
+    struct Identifier {
+        static let mapSegue = "showMap"
+        static let popUpSegue = "showPopUp"
+        static let locationSegue = "showLocation"
+    }
 }

@@ -24,11 +24,12 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet var scrollView: UIScrollView!
     
-    // MARK: View lifecycle
+    // MARK: Variables
     
     var address = Address(title: "", city: "", state: "", postal: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
-    //var managedObjectContext: NSManagedObjectContext!
-
+    var activityIndicator: ActivityIndicator!
+    
+    // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         changeTextFieldStyle()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:))))
-        }
+        
+          }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +53,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         hideKeyboard()
         removeObservers()
     }
+    
     
     // MARK: Actions
     
@@ -86,6 +89,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         textFieldStyleSuccess(postalCustomView)
     }
     
+    // MARK: Setting delegate
+    
     func addTextFieldDelegate() {
         addressCustomView.textField.delegate = self
         cityCustomView.textField.delegate = self
@@ -93,15 +98,20 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         postalCustomView.textField.delegate = self
     }
     
+    // MARK: TextField methode
+    
     func textFieldShouldReturn() -> Bool {
         positionScrollView()
         return true
     }
     
+    // MARK: UITapGestureRecognizer methode
+    
     func didTapView(gesture: UITapGestureRecognizer) {
         view.endEditing(true)
         positionScrollView()
     }
+    
     
     // MARK: Keyboard handaling notifications
     
@@ -153,11 +163,9 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                 textFieldStyleError(view)
                 view.label.text = Constants.Message.error
                 return false
-            } else  {
+            } else {
                 return checkCondition(view)
-                
             }
-            
         default:
             return false
         }
@@ -229,9 +237,6 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     func findAddress() {
         
-        
-        
-        
         if (searchLocation(addressCustomView)&&searchLocation(cityCustomView)&&searchLocation(stateCustomView)&&searchLocation(postalCustomView)) {
             
             guard let address = addressCustomView.textField.text else {return}
@@ -254,20 +259,25 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             // "Zip": "95064",
             // "f": "pjson"]
             
-            //showAlertLoading()
+           // self.activityIndicator = ActivityIndicator(title: "Searching...", center: self.view.center)
+            //self.view.addSubview(self.activityIndicator.getViewActivityIndicator())
+           // self.activityIndicator.startAnimating()
+            //customActivityIndicatory(self.view, startAnimate: true)
+            LoadingIndicatorView.show("Searching")
             
             Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
+                
                 DispatchQueue.main.async( execute: {
                     
                     switch responseData.result {
                         
                     case .success:
-                       
+                        
                         let json = JSON(responseData.result.value as Any)
                         print(json)
                         if !(json["candidates"].array?.isEmpty)! {
                             let firstLocation =  json["candidates"][0].dictionary
-                            let location = firstLocation?["address"]?.string
+                            _ = firstLocation?["address"]?.string
                             let lat = firstLocation?["location"]?["x"].doubleValue
                             let long = firstLocation?["location"]?["y"].doubleValue
                             
@@ -277,16 +287,19 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                                                    state: state,
                                                    postal: postal,
                                                    coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
-                            
-                           //self.dismiss(animated: false, completion: nil)
-                           self.performSegue(withIdentifier: "showLocation", sender: self.address)
-                        }
-                        else {
-                           self.showAlertWrongAddress()
+                            LoadingIndicatorView.hide()
+                            //self.activityIndicator.stopAnimating()
+                            //customActivityIndicatory(self.view, startAnimate: false)
+                            self.performSegue(withIdentifier: Constants.Identifier.locationSegue, sender: self.address)
+                        } else {
+                            LoadingIndicatorView.hide()
+                            //self.activityIndicator.stopAnimating()
+                            self.showAlertWrongAddress()
                         }
                         
                     case .failure(let error):
                         if let error = error as? URLError, error.code == URLError.notConnectedToInternet {
+                            LoadingIndicatorView.hide()
                             self.showAlertNetworkError()
                         } else {
                             print("Error fetching address \(error)")
@@ -294,10 +307,9 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                     }
                 })
             }
-        }else {
+        } else {
             print("Error")
         }
-        
     }
     
     // MARK: Alert
@@ -309,7 +321,6 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
-        
     }
     
     func showAlertWrongAddress() {
@@ -322,7 +333,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     }
     
     func  showAlertLoading()  {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "Loading... Please wait.", preferredStyle: .alert)
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
@@ -340,7 +351,6 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             let mapViewController = segue.destination as! MapViewController
             mapViewController.address = self.address
             navigationItem.backBarButtonItem?.title = ""
-            
         }
     }
 }
