@@ -59,7 +59,7 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDele
         cell.delegate = self
         cell.indexPath = indexPath
         let location = locations[indexPath.row]
-       // self.index = cell.indexPath
+        self.index = cell.indexPath
         
         cell.addressLabel.text = location.address
         cell.cityLabel.text = location.city

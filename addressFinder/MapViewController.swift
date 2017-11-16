@@ -21,6 +21,7 @@ class MapViewController: UIViewController {
     
     let regionRadius: CLLocationDistance = 1000
     var address = Address(title: "", city: "", state: "", postal: "",  coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
+    var locations: [Location] = []
     
     // MARK: View lifecycle
     
@@ -38,8 +39,7 @@ class MapViewController: UIViewController {
     
     @IBAction func saveLocation(_ sender: UIButton) {
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         
         let location = Location(context: context)
@@ -49,14 +49,29 @@ class MapViewController: UIViewController {
         location.postal = address.postal
         location.longitude = address.coordinate.longitude
         location.latitude = address.coordinate.latitude
+    
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
+        let predicate = NSPredicate(format: "address == %@", location.address! )
+        request.predicate = predicate
+        request.fetchLimit = 1
         
-        
-        
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        bookmarkButton.isEnabled = false
-        locationIsSavedAlert()
-        performSegue(withIdentifier: "showMapView", sender: location)
-        
+        do{
+    
+            let count = try context.count(for: request)
+            if(count == 0) {
+                print("no present")
+                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                locationIsSavedAlert()
+                // performSegue(withIdentifier: "showMapView", sender: location)
+            }
+            else{
+                // at least one matching object exists
+                print("one matching item found")
+            }
+        }
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
     
     // MARK: CLLocation methode

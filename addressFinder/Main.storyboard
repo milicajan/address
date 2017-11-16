@@ -266,32 +266,32 @@
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFJ-XM-Zw7">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AiN-dK-t0P">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQf-Us-nd2">
                                 <rect key="frame" x="344" y="602" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="6iF-zx-Er7"/>
-                                    <constraint firstAttribute="width" constant="50" id="jUf-vD-seK"/>
+                                    <constraint firstAttribute="width" constant="50" id="uKK-cK-PSF"/>
+                                    <constraint firstAttribute="height" constant="50" id="um4-rs-FMl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="60"/>
+                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="65"/>
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveLocation:" destination="mh0-3u-bIf" eventType="touchUpInside" id="bpV-Pl-bOk"/>
-                                    <segue destination="vF7-cx-ZGz" kind="show" identifier="showMapVie" id="Yml-YJ-7UB"/>
+                                    <action selector="saveLocation:" destination="mh0-3u-bIf" eventType="touchUpInside" id="htB-Tv-eai"/>
+                                    <segue destination="vF7-cx-ZGz" kind="show" identifier="showLocation" id="A71-GK-nKP"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AiN-dK-t0P">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CFJ-XM-Zw7" secondAttribute="trailing" constant="20" id="NVa-2X-3xi"/>
-                            <constraint firstItem="Xf4-ph-aNK" firstAttribute="top" secondItem="CFJ-XM-Zw7" secondAttribute="bottom" constant="20" id="QLP-63-T3O"/>
+                            <constraint firstAttribute="trailing" secondItem="yQf-Us-nd2" secondAttribute="trailing" constant="20" id="ElJ-Em-n1X"/>
                             <constraint firstItem="AiN-dK-t0P" firstAttribute="top" secondItem="HkP-xS-Wl8" secondAttribute="bottom" id="WZn-lb-jDw"/>
                             <constraint firstItem="Xf4-ph-aNK" firstAttribute="top" secondItem="AiN-dK-t0P" secondAttribute="bottom" id="YSd-8B-GKW"/>
+                            <constraint firstItem="Xf4-ph-aNK" firstAttribute="top" secondItem="yQf-Us-nd2" secondAttribute="bottom" constant="20" id="Zck-Dv-ZPv"/>
                             <constraint firstAttribute="trailing" secondItem="AiN-dK-t0P" secondAttribute="trailing" id="hBZ-5L-ts9"/>
                             <constraint firstItem="AiN-dK-t0P" firstAttribute="leading" secondItem="na5-Sd-tvc" secondAttribute="leading" id="oZ2-fa-EIC"/>
                             <constraint firstAttribute="bottom" secondItem="AiN-dK-t0P" secondAttribute="bottom" id="t6x-fD-8Um"/>
@@ -300,8 +300,8 @@
                     <navigationItem key="navigationItem" title="View Address" id="VcL-TY-IP1"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="bookmarkButton" destination="CFJ-XM-Zw7" id="zcy-Y3-vSh"/>
-                        <outlet property="mapView" destination="AiN-dK-t0P" id="hL6-um-Xdy"/>
+                        <outlet property="bookmarkButton" destination="yQf-Us-nd2" id="PAN-a0-K8C"/>
+                        <outlet property="mapView" destination="AiN-dK-t0P" id="ldK-mS-IUM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzM-YD-kcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -475,7 +475,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Hhq-Yf-TNj"/>
-        <segue reference="Yml-YJ-7UB"/>
+        <segue reference="A71-GK-nKP"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>
