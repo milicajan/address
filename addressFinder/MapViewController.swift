@@ -53,7 +53,9 @@ class MapViewController: UIViewController {
         
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        bookmarkButton.isEnabled = false
         locationIsSavedAlert()
+        performSegue(withIdentifier: "showMapView", sender: location)
         
     }
     
