@@ -12,7 +12,7 @@ import UIKit
 
 protocol CellDelegate {
     func deleteButtonTapped(at index: IndexPath)
-  func showLocationButtonTapped(at index: IndexPath)
+    func showLocationButtonTapped(at index: IndexPath)
 }
 
 class MyCustomCellTableViewCell: UITableViewCell {
@@ -28,7 +28,7 @@ class MyCustomCellTableViewCell: UITableViewCell {
     
     var delegate: CellDelegate!
     var indexPath: IndexPath!
-  
+    
     // MARK: Actions
     
     @IBAction func deleteLocationTappedButton(_ sender: UIButton) {
@@ -40,7 +40,7 @@ class MyCustomCellTableViewCell: UITableViewCell {
         self.delegate?.showLocationButtonTapped(at: indexPath)
     }
     
-  
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
