@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="17B48" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qrM-ec-Xp6">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qrM-ec-Xp6">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,11 +26,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nai-dJ-cbR">
-                                <rect key="frame" x="20" y="351.5" width="335" height="40"/>
+                                <rect key="frame" x="20" y="386" width="374" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="yE0-7E-mWU"/>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNg-6w-xrg">
-                                <rect key="frame" x="20" y="281.5" width="335" height="40"/>
+                                <rect key="frame" x="20" y="316" width="374" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fmG-we-bUB"/>
@@ -79,7 +79,9 @@
                             <constraint firstItem="Nai-dJ-cbR" firstAttribute="top" secondItem="bNg-6w-xrg" secondAttribute="bottom" constant="30" id="ycQ-wH-zKn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Address Finder" id="p3s-CC-hj3"/>
+                    <navigationItem key="navigationItem" title="Address Finder" id="p3s-CC-hj3">
+                        <barButtonItem key="backBarButtonItem" title=" " id="HwN-dH-3rH"/>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="bookmarkAddressButton" destination="Nai-dJ-cbR" id="DgH-aq-7Pl"/>
@@ -99,17 +101,17 @@
                         <viewControllerLayoutGuide type="bottom" id="0MI-G1-Bg5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pFN-fo-FZ6">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nre-2E-FTp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zez-4n-bkx">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMs-5O-i4B" customClass="MyCustomView" customModule="addressFinder" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="220" width="335" height="44"/>
+                                                <rect key="frame" x="20" y="220" width="374" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="bTW-Bs-Tyf"/>
@@ -126,7 +128,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRL-y9-sKO" customClass="MyCustomView" customModule="addressFinder" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="284" width="335" height="44"/>
+                                                <rect key="frame" x="20" y="284" width="374" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="QCg-OO-KGi"/>
@@ -143,7 +145,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbG-Zi-Nvg" customClass="MyCustomView" customModule="addressFinder" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="348" width="335" height="44"/>
+                                                <rect key="frame" x="20" y="348" width="374" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="qAf-Os-uEe"/>
@@ -160,7 +162,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R9S-xx-3Lo" customClass="MyCustomView" customModule="addressFinder" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="412" width="335" height="44"/>
+                                                <rect key="frame" x="20" y="412" width="374" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Da3-Qv-fRH"/>
@@ -177,7 +179,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgz-jR-0Gf">
-                                                <rect key="frame" x="20" y="523" width="335" height="40"/>
+                                                <rect key="frame" x="20" y="592" width="374" height="40"/>
                                                 <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                                                 <constraints>
@@ -238,7 +240,9 @@
                             <constraint firstItem="nre-2E-FTp" firstAttribute="top" secondItem="oKQ-gr-u5M" secondAttribute="bottom" id="rjF-T1-CZw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Find Address" id="Y0v-G4-P4d"/>
+                    <navigationItem key="navigationItem" title="Find Address" id="Y0v-G4-P4d">
+                        <barButtonItem key="backBarButtonItem" title=" " id="NPS-4q-pXT"/>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="addressCustomView" destination="ZMs-5O-i4B" id="6Li-gI-nS3"/>
@@ -263,14 +267,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Xf4-ph-aNK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="na5-Sd-tvc">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AiN-dK-t0P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQf-Us-nd2">
-                                <rect key="frame" x="305" y="533" width="50" height="50"/>
+                                <rect key="frame" x="344" y="602" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="uKK-cK-PSF"/>
@@ -296,7 +300,15 @@
                             <constraint firstAttribute="bottom" secondItem="AiN-dK-t0P" secondAttribute="bottom" id="t6x-fD-8Um"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="View Address" id="VcL-TY-IP1"/>
+                    <navigationItem key="navigationItem" title="View Address" id="VcL-TY-IP1">
+                        <barButtonItem key="backBarButtonItem" title=" " id="aoG-5c-AIo"/>
+                        <barButtonItem key="rightBarButtonItem" image="eye@1" id="ZDU-CV-VzM">
+                            <color key="tintColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="vF7-cx-ZGz" kind="show" id="4wJ-66-cmU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="bookmarkButton" destination="yQf-Us-nd2" id="PAN-a0-K8C"/>
@@ -316,11 +328,11 @@
                         <viewControllerLayoutGuide type="bottom" id="PrO-gq-hCX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aND-dS-rxs">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fnW-dl-T9m">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -338,7 +350,9 @@
                             <constraint firstItem="fnW-dl-T9m" firstAttribute="leading" secondItem="aND-dS-rxs" secondAttribute="leading" id="zrI-pT-tDk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Bookmarks" id="HNi-GO-AhV"/>
+                    <navigationItem key="navigationItem" title="Bookmarks" id="HNi-GO-AhV">
+                        <barButtonItem key="backBarButtonItem" title=" " id="sfD-a2-35P"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="fnW-dl-T9m" id="qg0-Be-nzZ"/>
                         <segue destination="C4L-6u-Y9z" kind="presentation" identifier="showPopUp" id="H0P-rj-W0j"/>
@@ -358,14 +372,14 @@
                         <viewControllerLayoutGuide type="bottom" id="e0J-te-9hS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NbC-V8-CIO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" translatesAutoresizingMaskIntoConstraints="NO" id="Yc7-96-NPR" userLabel="Pop-up View">
-                                <rect key="frame" x="20" y="304" width="335" height="59"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yc7-96-NPR" userLabel="Pop-up View">
+                                <rect key="frame" x="32.333333333333343" y="303" width="349.66666666666663" height="130"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lP-ih-M80">
-                                        <rect key="frame" x="20" y="9" width="120" height="30"/>
+                                        <rect key="frame" x="20" y="80" width="120" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.25098039220000001" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="7zS-P9-qSI"/>
@@ -384,14 +398,14 @@
                                             <action selector="noButtonTappedAction:" destination="C4L-6u-Y9z" eventType="touchUpInside" id="C3O-IN-x3A"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to delete bookmark?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4c-sv-r7x">
-                                        <rect key="frame" x="40" y="20" width="255" height="22"/>
-                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to delete bookmark?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4c-sv-r7x">
+                                        <rect key="frame" x="70" y="20" width="209.66666666666669" height="49"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S78-92-mvo">
-                                        <rect key="frame" x="195" y="9" width="120" height="30"/>
+                                        <rect key="frame" x="209.66666666666663" y="80" width="120" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="D2G-yl-5ri"/>
@@ -413,14 +427,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.90338720034246578" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="I4c-sv-r7x" secondAttribute="trailing" constant="40" id="7RS-hg-kpt"/>
+                                    <constraint firstItem="7lP-ih-M80" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I4c-sv-r7x" secondAttribute="bottom" constant="5" id="0wl-0g-9bf"/>
+                                    <constraint firstAttribute="trailing" secondItem="I4c-sv-r7x" secondAttribute="trailing" constant="70" id="7RS-hg-kpt"/>
                                     <constraint firstAttribute="bottom" secondItem="S78-92-mvo" secondAttribute="bottom" constant="20" id="8X8-UR-uk1"/>
+                                    <constraint firstItem="S78-92-mvo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I4c-sv-r7x" secondAttribute="bottom" constant="5" id="A17-Go-HAO"/>
                                     <constraint firstItem="7lP-ih-M80" firstAttribute="leading" secondItem="Yc7-96-NPR" secondAttribute="leading" constant="20" id="IDu-rR-ZXO"/>
                                     <constraint firstAttribute="bottom" secondItem="7lP-ih-M80" secondAttribute="bottom" constant="20" id="IHy-RZ-N51"/>
-                                    <constraint firstItem="I4c-sv-r7x" firstAttribute="leading" secondItem="Yc7-96-NPR" secondAttribute="leading" constant="40" id="Luw-fE-Lxh"/>
+                                    <constraint firstItem="I4c-sv-r7x" firstAttribute="leading" secondItem="Yc7-96-NPR" secondAttribute="leading" constant="70" id="Luw-fE-Lxh"/>
                                     <constraint firstAttribute="trailing" secondItem="S78-92-mvo" secondAttribute="trailing" constant="20" id="WGD-hG-tnf"/>
                                     <constraint firstItem="S78-92-mvo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7lP-ih-M80" secondAttribute="trailing" constant="20" id="ela-s6-XPP"/>
                                     <constraint firstItem="I4c-sv-r7x" firstAttribute="top" secondItem="Yc7-96-NPR" secondAttribute="top" constant="20" id="oq0-K8-tpR"/>
+                                    <constraint firstAttribute="height" constant="130" id="yAq-Mh-icp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -431,11 +448,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Yc7-96-NPR" firstAttribute="centerY" secondItem="NbC-V8-CIO" secondAttribute="centerY" id="3MJ-Tw-TJL"/>
-                            <constraint firstAttribute="trailing" secondItem="Yc7-96-NPR" secondAttribute="trailing" constant="20" id="Cnw-0h-vC6"/>
-                            <constraint firstItem="Yc7-96-NPR" firstAttribute="top" secondItem="Lpn-47-IwY" secondAttribute="bottom" constant="284" id="IfK-0J-5TS"/>
-                            <constraint firstItem="Yc7-96-NPR" firstAttribute="centerX" secondItem="NbC-V8-CIO" secondAttribute="centerX" id="qdb-gq-pkH"/>
-                            <constraint firstItem="Yc7-96-NPR" firstAttribute="leading" secondItem="NbC-V8-CIO" secondAttribute="leading" constant="20" id="tgu-4d-3XQ"/>
+                            <constraint firstItem="Yc7-96-NPR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NbC-V8-CIO" secondAttribute="leading" constant="5" id="Gqy-2j-By2"/>
+                            <constraint firstItem="Yc7-96-NPR" firstAttribute="centerY" secondItem="NbC-V8-CIO" secondAttribute="centerY" id="Jsw-co-mmH"/>
+                            <constraint firstItem="Yc7-96-NPR" firstAttribute="centerX" secondItem="NbC-V8-CIO" secondAttribute="centerX" id="SaD-2B-HBs"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Yc7-96-NPR" secondAttribute="trailing" constant="5" id="e2Z-VL-VEv"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -470,10 +486,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="eye@1" width="21" height="12"/>
         <image name="img_back" width="14" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hhq-Yf-TNj"/>
+        <segue reference="4wJ-66-cmU"/>
+        <segue reference="0gT-HO-lNl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.0" green="0.43921568630000002" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>

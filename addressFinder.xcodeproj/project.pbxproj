@@ -36,6 +36,9 @@
 		6C5A5D3D1FA9BFD9004C62B2 /* Oswald-Stencil.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2C1FA9BFD9004C62B2 /* Oswald-Stencil.ttf */; };
 		6C5A5D3E1FA9BFD9004C62B2 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */; };
 		6C6BEC6D1FBDCBF50026961D /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6BEC6C1FBDCBF50026961D /* LoadingIndicatorView.swift */; };
+		6C6D6C911FBEF303007C9845 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D6C901FBEF303007C9845 /* Gradient.swift */; };
+		6C6D6C931FBEFFFB007C9845 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D6C921FBEFFFB007C9845 /* BounceAnimationController.swift */; };
+		6C6D6C951FBF0B78007C9845 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D6C941FBF0B78007C9845 /* SlideOutAnimationController.swift */; };
 		6C6D8D6C1FB9B5F600E070F0 /* MyCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C6D8D6B1FB9B5F600E070F0 /* MyCustomCell.xib */; };
 		6C6D8D6E1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D8D6D1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift */; };
 		6C6D8D701FB9CDED00E070F0 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D8D6F1FB9CDED00E070F0 /* BookmarkViewController.swift */; };
@@ -78,6 +81,9 @@
 		6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		6C5A5D411FA9C044004C62B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C6BEC6C1FBDCBF50026961D /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
+		6C6D6C901FBEF303007C9845 /* Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		6C6D6C921FBEFFFB007C9845 /* BounceAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
+		6C6D6C941FBF0B78007C9845 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		6C6D8D6B1FB9B5F600E070F0 /* MyCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCustomCell.xib; sourceTree = "<group>"; };
 		6C6D8D6D1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		6C6D8D6F1FB9CDED00E070F0 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
@@ -114,13 +120,13 @@
 		3D0CFD9D1FAF251900DD4BFD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */,
 				6C5A5D121FA9BD7A004C62B2 /* AddresFinderMain */,
 				6C5A5D151FA9BE1D004C62B2 /* FindAddress */,
 				6CD2469F1FB3041E00D70C7D /* MapViewController */,
 				6C6D8D631FB98C9F00E070F0 /* BookmarksViewController */,
 				6C7BE4141FBAF850003C10AB /* CoreDataFunctions.swift */,
 				6C6BEC6C1FBDCBF50026961D /* LoadingIndicatorView.swift */,
+				3D87143C1FAF5F30008FDCBE /* MyCustomView.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -217,13 +223,24 @@
 			path = oswald;
 			sourceTree = "<group>";
 		};
+		6C6D6C8F1FBEF2E2007C9845 /* PopUpViewControllerAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				3D4F924C1FBB7D8C004FA54E /* DimmingPresentationController.swift */,
+				6C6D6C901FBEF303007C9845 /* Gradient.swift */,
+				6C6D6C921FBEFFFB007C9845 /* BounceAnimationController.swift */,
+				6C6D6C941FBF0B78007C9845 /* SlideOutAnimationController.swift */,
+			);
+			name = PopUpViewControllerAnimation;
+			sourceTree = "<group>";
+		};
 		6C6D8D631FB98C9F00E070F0 /* BookmarksViewController */ = {
 			isa = PBXGroup;
 			children = (
 				6C6D8D6D1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift */,
 				6C6D8D6F1FB9CDED00E070F0 /* BookmarkViewController.swift */,
 				6C7BE41D1FBB3191003C10AB /* PopUpViewController.swift */,
-				3D4F924C1FBB7D8C004FA54E /* DimmingPresentationController.swift */,
+				6C6D6C8F1FBEF2E2007C9845 /* PopUpViewControllerAnimation */,
 			);
 			name = BookmarksViewController;
 			sourceTree = "<group>";
@@ -416,10 +433,13 @@
 				6C5A5D001FA9BA39004C62B2 /* AddressFinderViewController.swift in Sources */,
 				6C7BE41C1FBB1023003C10AB /* CoreData.xcdatamodeld in Sources */,
 				3D87143D1FAF5F30008FDCBE /* MyCustomView.swift in Sources */,
+				6C6D6C911FBEF303007C9845 /* Gradient.swift in Sources */,
 				6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */,
 				3D4F924D1FBB7D8C004FA54E /* DimmingPresentationController.swift in Sources */,
+				6C6D6C951FBF0B78007C9845 /* SlideOutAnimationController.swift in Sources */,
 				6CD246A31FB3222E00D70C7D /* Address.swift in Sources */,
 				6C7BE41E1FBB3191003C10AB /* PopUpViewController.swift in Sources */,
+				6C6D6C931FBEFFFB007C9845 /* BounceAnimationController.swift in Sources */,
 				6C6BEC6D1FBDCBF50026961D /* LoadingIndicatorView.swift in Sources */,
 				6C6D8D701FB9CDED00E070F0 /* BookmarkViewController.swift in Sources */,
 				6C6D8D6E1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift in Sources */,

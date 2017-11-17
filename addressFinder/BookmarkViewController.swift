@@ -39,14 +39,11 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDele
         let cellNib = UINib(nibName: "MyCustomCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: Constants.TableViewCellIdentifiers.locationCell)
         tableView.rowHeight = 120
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchTheData()
         tableView.reloadData()
-        
     }
     
     //MARK: TableView DataSource

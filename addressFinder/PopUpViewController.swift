@@ -31,10 +31,18 @@ class PopUpViewController: UIViewController {
         self.delegate?.noButtonPressed()
     }
     
+    // MARK: Init
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         modalPresentationStyle = .custom
         transitioningDelegate = self
+    }
+    
+    // MARK: View life cycle
+    
+    override func viewDidLoad() {
+        view.backgroundColor = UIColor.clear
     }
 }
 
@@ -44,4 +52,13 @@ extension PopUpViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return DimmingPresentationController(presentedViewController: presented, presenting: presenting)
     }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+            return BounceAnimationController()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideOutAnimationController()
+    }
 }
+

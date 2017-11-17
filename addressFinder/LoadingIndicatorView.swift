@@ -35,17 +35,14 @@ class LoadingIndicatorView {
     }
     
     static func show(_ overlayTarget : UIView, loadingText: String?) {
-        // Clear it first in case it was already shown
         hide()
         
-        // register device orientation notification
         NotificationCenter.default.addObserver(
             self, selector:
             #selector(LoadingIndicatorView.rotated),
             name: NSNotification.Name.UIDeviceOrientationDidChange,
             object: nil)
         
-        // Create the overlay
         let overlay = UIView(frame: overlayTarget.frame)
         overlay.center = overlayTarget.center
         overlay.alpha = 0
@@ -53,13 +50,11 @@ class LoadingIndicatorView {
         overlayTarget.addSubview(overlay)
         overlayTarget.bringSubview(toFront: overlay)
         
-        // Create and animate the activity indicator
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
         indicator.center = overlay.center
         indicator.startAnimating()
         overlay.addSubview(indicator)
         
-        // Create label
         if let textString = loadingText {
             let label = UILabel()
             label.text = textString
@@ -69,7 +64,6 @@ class LoadingIndicatorView {
             overlay.addSubview(label)
         }
         
-        // Animate the overlay to show
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(0.5)
         overlay.alpha = overlay.alpha > 0 ? 0 : 0.5
@@ -83,7 +77,6 @@ class LoadingIndicatorView {
     static func hide() {
         if currentOverlay != nil {
             
-            // unregister device orientation notification
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
             
             currentOverlay?.removeFromSuperview()
@@ -94,7 +87,6 @@ class LoadingIndicatorView {
     }
     
     @objc private static func rotated() {
-        // handle device orientation change by reactivating the loading indicator
         if currentOverlay != nil {
             show(currentOverlayTarget!, loadingText: currentLoadingText)
         }

@@ -111,10 +111,13 @@
                     <constraint firstAttribute="bottom" secondItem="wBy-Wf-giA" secondAttribute="bottom" constant="10" id="epY-2D-Mp3"/>
                     <constraint firstItem="Cqw-xf-eXd" firstAttribute="baseline" secondItem="G2h-Ij-bmP" secondAttribute="baseline" id="hsy-ky-n1o"/>
                     <constraint firstItem="MfD-S4-0Kc" firstAttribute="baseline" secondItem="wBy-Wf-giA" secondAttribute="firstBaseline" id="ih0-gk-Q4c"/>
+                    <constraint firstItem="dn8-5k-e0f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="czc-sv-5gj" secondAttribute="trailing" constant="5" id="lVF-SU-igx"/>
+                    <constraint firstItem="spy-mK-Dh0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Cqw-xf-eXd" secondAttribute="trailing" constant="5" id="pCN-iu-OKy"/>
                     <constraint firstItem="Cqw-xf-eXd" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leadingMargin" constant="66" id="tSk-97-THg"/>
                     <constraint firstItem="spy-mK-Dh0" firstAttribute="top" secondItem="dn8-5k-e0f" secondAttribute="bottom" constant="15" id="uJM-HE-iNs"/>
                     <constraint firstItem="ZTP-5x-73D" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leading" constant="10" id="uJh-0u-VaP"/>
                     <constraint firstItem="Y8N-dj-9e6" firstAttribute="leading" secondItem="0Nb-tX-1Mo" secondAttribute="leading" constant="10" id="uqQ-qv-4A9"/>
+                    <constraint firstItem="dn8-5k-e0f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hos-Le-S52" secondAttribute="trailing" constant="5" id="vLU-I9-ET9"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>

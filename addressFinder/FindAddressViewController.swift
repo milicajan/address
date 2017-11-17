@@ -32,14 +32,13 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addTextFieldDelegate()
         
         changeTextFieldStyle()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapView(gesture:))))
         
-          }
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -251,15 +250,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                 "f": "pjson"]
             
             let baseURL = "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer///findAddressCandidates"
-            
-            // let parameters = ["Address": "1156 High Street",
-            //  "City": "Santa Cruz",
-            //  "State": "CA",
-            // "Zip": "95064",
-            // "f": "pjson"]
-            
-    
-            LoadingIndicatorView.show("Searching")
+            LoadingIndicatorView.show("Searching...")
             
             Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
                 
@@ -283,8 +274,8 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                                                    state: state,
                                                    postal: postal,
                                                    coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
-                          
-                          LoadingIndicatorView.hide()
+                            
+                            LoadingIndicatorView.hide()
                             self.performSegue(withIdentifier: Constants.Identifier.locationSegue, sender: self.address)
                         } else {
                             LoadingIndicatorView.hide()
@@ -306,7 +297,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: Alert
+    // MARK: Alert methodes
     
     func showAlertNetworkError() {
         let alert = UIAlertController(title: "NETWORK ERROR", message: "There is no internet connection.Please try again.",

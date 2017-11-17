@@ -20,9 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let attributes = [NSFontAttributeName : UIFont(name: "Oswald-Regular", size: 24)!, NSForegroundColorAttributeName: UIColor(red: 228.0/255.0, green: 247.0/255.0, blue: 255.0/255.0, alpha: 1.0)]
         UINavigationBar.appearance().titleTextAttributes = attributes
         
-        _ = UIBarButtonItem.appearance()
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.normal)
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.clear], for: UIControlState.highlighted)
+        // Remove line under navigationBar
+        
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
         UINavigationBar.appearance().barStyle = .blackOpaque
         
@@ -66,17 +67,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
-                
-                
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
