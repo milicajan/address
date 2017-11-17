@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import MapKit
 
-class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDelegate, PopUpViewDelegate {
+class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDelegate {
     
     // MARK: Outlets
     
@@ -21,34 +21,41 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDele
     var locations: [Location] = []
     var index: IndexPath!
     var fullAddress = Address(title: "", city: "", state: "", postal: "",  coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
-    
-    
+  
     // MARK: Actions
     
     @IBAction func backButtonTappedAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
-    // MARK: View lifecycle
+  // MARK: View lifecycle
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.reloadData()
-        
-        let cellNib = UINib(nibName: "MyCustomCell", bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: Constants.TableViewCellIdentifiers.locationCell)
-        tableView.rowHeight = 120
-        
-        
-    }
+    fetchTheData()
+    tableView.reloadData()
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-        fetchTheData()
-    }
+    let cellNib = UINib(nibName: "MyCustomCell", bundle: nil)
+    tableView.register(cellNib, forCellReuseIdentifier: Constants.TableViewCellIdentifiers.locationCell)
+    tableView.rowHeight = 120
     
+    
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    
+    fetchTheData()
+    tableView.reloadData()
+    
+  }
+  override func viewDidAppear(_ animated: Bool) {
+    fetchTheData()
+    tableView.reloadData()
+  }
+  
     //MARK: TableView DataSource
-    
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -56,10 +63,11 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.TableViewCellIdentifiers.locationCell, for: indexPath) as! MyCustomCellTableViewCell
+      
         cell.delegate = self
         cell.indexPath = indexPath
         let location = locations[indexPath.row]
-        self.index = cell.indexPath
+        
         
         cell.addressLabel.text = location.address
         cell.cityLabel.text = location.city
@@ -68,24 +76,34 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDele
         
         return cell
         
+  }
+  
+  func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    locations.remove(at: indexPath.row)
+    tableView.deleteRows(at: [indexPath], with: .automatic)
+  }
+  
+  // MARK: CoreData methode
+  
+  func fetchTheData() {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    do {
+      
+      self.locations = try context.fetch(Location.fetchRequest())
+    } catch {
+      print("Fetching Faild")
     }
-    
-    // MARK: CoreData methode
-    
-    func fetchTheData() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        do {
-            
-            self.locations = try context.fetch(Location.fetchRequest())
-        } catch {
-            print("Fetching Faild")
-        }
-    }
-    
+  }
+  
     // MARK: CellDelegate methodes
-    
-    func deleteButtonTapped(at index: IndexPath) {
+  
+  func deleteButtonTapped(at index: IndexPath) {
+        self.index = index
         performSegue(withIdentifier: Constants.Identifier.popUpSegue, sender: self.index)
     }
     
@@ -108,29 +126,7 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDele
         self.fullAddress = fullAddress
         performSegue(withIdentifier: Constants.Identifier.mapSegue, sender: fullAddress)
     }
-    
-    // MARK: PopUpViewDelegate
-    
-    func noButtonPressed(){
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func  yesButtonPressed() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let location = locations[index.row]
-        context.delete(location)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        
-        do {
-            self.locations = try context.fetch(Location.fetchRequest())
-        } catch {
-            print("Fetching faild")
-        }
-        
-        tableView.reloadData()
-        dismiss(animated: true, completion: nil)
-    }
-    
+  
     // MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.Identifier.mapSegue {
@@ -138,7 +134,9 @@ class  BookmarkViewController: UIViewController, UITableViewDataSource, CellDele
             mapViewController.address = fullAddress
         } else if segue.identifier == Constants.Identifier.popUpSegue {
             let popUpViewController = segue.destination as! PopUpViewController
-            popUpViewController.delegate = self
+            popUpViewController.indexPath = self.index
+          popUpViewController.locations = self.locations
+          popUpViewController.tableView = self.tableView
         }
     }
 }

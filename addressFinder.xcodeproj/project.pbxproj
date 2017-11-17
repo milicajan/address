@@ -35,8 +35,6 @@
 		6C5A5D3C1FA9BFD9004C62B2 /* Oswald-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2B1FA9BFD9004C62B2 /* Oswald-RegularItalic.ttf */; };
 		6C5A5D3D1FA9BFD9004C62B2 /* Oswald-Stencil.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2C1FA9BFD9004C62B2 /* Oswald-Stencil.ttf */; };
 		6C5A5D3E1FA9BFD9004C62B2 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */; };
-		6C6BEC691FBDB0090026961D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6BEC681FBDB0090026961D /* ActivityIndicator.swift */; };
-		6C6BEC6B1FBDBD4F0026961D /* new.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6BEC6A1FBDBD4F0026961D /* new.swift */; };
 		6C6BEC6D1FBDCBF50026961D /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6BEC6C1FBDCBF50026961D /* LoadingIndicatorView.swift */; };
 		6C6D8D6C1FB9B5F600E070F0 /* MyCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C6D8D6B1FB9B5F600E070F0 /* MyCustomCell.xib */; };
 		6C6D8D6E1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D8D6D1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift */; };
@@ -79,8 +77,6 @@
 		6C5A5D2C1FA9BFD9004C62B2 /* Oswald-Stencil.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Stencil.ttf"; sourceTree = "<group>"; };
 		6C5A5D2D1FA9BFD9004C62B2 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		6C5A5D411FA9C044004C62B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C6BEC681FBDB0090026961D /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
-		6C6BEC6A1FBDBD4F0026961D /* new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = new.swift; sourceTree = "<group>"; };
 		6C6BEC6C1FBDCBF50026961D /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		6C6D8D6B1FB9B5F600E070F0 /* MyCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCustomCell.xib; sourceTree = "<group>"; };
 		6C6D8D6D1FB9BF4100E070F0 /* MyCustomCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,8 +120,6 @@
 				6CD2469F1FB3041E00D70C7D /* MapViewController */,
 				6C6D8D631FB98C9F00E070F0 /* BookmarksViewController */,
 				6C7BE4141FBAF850003C10AB /* CoreDataFunctions.swift */,
-				6C6BEC681FBDB0090026961D /* ActivityIndicator.swift */,
-				6C6BEC6A1FBDBD4F0026961D /* new.swift */,
 				6C6BEC6C1FBDCBF50026961D /* LoadingIndicatorView.swift */,
 			);
 			name = Controllers;
@@ -423,10 +417,8 @@
 				6C7BE41C1FBB1023003C10AB /* CoreData.xcdatamodeld in Sources */,
 				3D87143D1FAF5F30008FDCBE /* MyCustomView.swift in Sources */,
 				6C5A5CFE1FA9BA39004C62B2 /* AppDelegate.swift in Sources */,
-				6C6BEC691FBDB0090026961D /* ActivityIndicator.swift in Sources */,
 				3D4F924D1FBB7D8C004FA54E /* DimmingPresentationController.swift in Sources */,
 				6CD246A31FB3222E00D70C7D /* Address.swift in Sources */,
-				6C6BEC6B1FBDBD4F0026961D /* new.swift in Sources */,
 				6C7BE41E1FBB3191003C10AB /* PopUpViewController.swift in Sources */,
 				6C6BEC6D1FBDCBF50026961D /* LoadingIndicatorView.swift in Sources */,
 				6C6D8D701FB9CDED00E070F0 /* BookmarkViewController.swift in Sources */,

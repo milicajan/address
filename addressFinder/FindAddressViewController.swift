@@ -27,7 +27,6 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
     // MARK: Variables
     
     var address = Address(title: "", city: "", state: "", postal: "", coordinate: CLLocationCoordinate2D(latitude: 0.0 , longitude: 0.0))
-    var activityIndicator: ActivityIndicator!
     
     // MARK: View lifecycle
     
@@ -259,10 +258,7 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
             // "Zip": "95064",
             // "f": "pjson"]
             
-           // self.activityIndicator = ActivityIndicator(title: "Searching...", center: self.view.center)
-            //self.view.addSubview(self.activityIndicator.getViewActivityIndicator())
-           // self.activityIndicator.startAnimating()
-            //customActivityIndicatory(self.view, startAnimate: true)
+    
             LoadingIndicatorView.show("Searching")
             
             Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (responseData) in
@@ -287,13 +283,11 @@ class FindAddressViewController: UIViewController, UITextFieldDelegate {
                                                    state: state,
                                                    postal: postal,
                                                    coordinate: CLLocationCoordinate2D(latitude: long! , longitude: lat!))
-                            LoadingIndicatorView.hide()
-                            //self.activityIndicator.stopAnimating()
-                            //customActivityIndicatory(self.view, startAnimate: false)
+                          
+                          LoadingIndicatorView.hide()
                             self.performSegue(withIdentifier: Constants.Identifier.locationSegue, sender: self.address)
                         } else {
                             LoadingIndicatorView.hide()
-                            //self.activityIndicator.stopAnimating()
                             self.showAlertWrongAddress()
                         }
                         

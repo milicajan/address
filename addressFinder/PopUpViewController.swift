@@ -8,35 +8,53 @@
 
 import UIKit
 
-// MARK: Protocol
-
-protocol PopUpViewDelegate {
-    func noButtonPressed()
-    func yesButtonPressed()
-}
-
 class PopUpViewController: UIViewController {
     
     // MARK: Variables
     
-    var delegate: PopUpViewDelegate!
+  var indexPath: IndexPath!
+  var locations: [Location] = []
+  var tableView: UITableView!
+
+  
+  // MARK: Actions
     
-    // MARK: Actions
+  @IBAction func yesButtonTappedAction(_ sender: UIButton) {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //locations.remove(at: indexPath.row)
+    //tableView.deleteRows(at: [indexPath], with: .automatic)
+    let location = locations[indexPath.row]
+    context.delete(location)
+    (UIApplication.shared.delegate as! AppDelegate).saveContext()
     
-    @IBAction func yesButtonTappedAction(_ sender: UIButton) {
-        self.delegate?.yesButtonPressed()
-    }
-    
+    fetchTheData()
+    tableView.reloadData()
+    dismiss(animated: true, completion: nil)
+  }
+
+  
     @IBAction func noButtonTappedAction(_ sender: UIButton) {
-        self.delegate?.noButtonPressed()
-    }
-    
+        dismiss(animated: true, completion: nil)
+  }
+  
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         modalPresentationStyle = .custom
         transitioningDelegate = self
     }
+  
+  
+  func fetchTheData() {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    do {
+      
+      self.locations = try context.fetch(Location.fetchRequest())
+    } catch {
+      print("Fetching Faild")
+    }
+  }
+  
 }
 
 // MARK: UIViewControllerTransitioningDelegate
